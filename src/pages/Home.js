@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PageContainer from '../styles/PageContainer';
+import { PageContainer } from '~/styles/globalStyles';
 
 const Page = styled(PageContainer)`
 

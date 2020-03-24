@@ -2,16 +2,11 @@ import React from 'react';
 
 import ModalContainer from './ModalContainer';
 import './styles.css';
-import PageTitleContainer from '../../styles/PageTitleContainer';
-import PageTitle from '../../styles/PageTitle';
 
 /* ======== Styles ========== */
-import {
-    BaseModal,
-    ModalContent,
-    ModalCloseButton,
-    FadeIn
-} from './styles';
+import { BaseModal, ModalContent, ModalCloseButton, FadeIn } from './styles';
+import { PageTitleContainer, PageTitle } from '~/styles/globalStyles';
+
 /* ======== Styles ========== */
 
 const Modal = ({ fechaModalFunc, titulo, children }) => { 

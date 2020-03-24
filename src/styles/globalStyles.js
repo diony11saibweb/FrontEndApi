@@ -25,3 +25,36 @@ export const PageTitleContainer = styled.div`
     width: 100%;
     margin-bottom: 25px;
 `;
+
+/* ======== CSS do Modal ==========  */
+export const ModalBodyContainer = styled.section`
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ededed;
+    border-radius: 4px;
+`;
+
+export const ModalHalfBordered = styled.div`
+    width: 50%;
+    border-right: 1px solid #ededed;
+    padding: 8px;
+`;
+
+export const ModalHalfNoBorder = styled(ModalHalfBordered)`
+    border: none;
+`;
+
+export const ModalBodyInner = styled.div`
+    width: 100%;
+    padding: 8px;
+`;
+
+export const ModalReportTitleContainer = styled(PageTitleContainer)`
+    color: #9e9e9e;
+    border-bottom: 1px solid #9e9e9e;
+`;
+
+export const ModalReportTitle = styled(PageTitle)`
+    font-size: 16px;
+    color: #9e9e9e;
+`;

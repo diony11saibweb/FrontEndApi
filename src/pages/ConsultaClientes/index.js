@@ -4,8 +4,8 @@ import { useHistory } from "react-router-dom";
 import { useToasts } from 'react-toast-notifications'
 
 /* ===== Styles ===== */
-import { PageContainer, PageTitle, PageTitleContainer, GridOptionsBar } from '~/styles/globalStyles';
-import { ModalBodyContainer, ModalReportSectionInfo, ModalReportSectionAddress, ModalReportTitleContainer, ModalReportTitle, ModalPersonalInfoRow } from './styles';
+import { PageContainer, ModalHalfBordered, ModalHalfNoBorder, ModalReportTitleContainer, ModalReportTitle, PageTitle, PageTitleContainer, GridOptionsBar, ModalBodyContainer, ModalBodyInner } from '~/styles/globalStyles';
+import { ModalPersonalInfoRow } from './styles';
 /* ===== Styles ===== */
 
 import '~/index.css';
@@ -14,6 +14,7 @@ import Utils from '~/utils/utils';
 import GridTexts from '~/utils/gridTexts';
 import Modal from '~/components/Modal';
 import Api from '~/utils/Api';
+import TypeSearch from '~/components/TypeSearch';
 
 const ConsultaClientes = () => {
 
@@ -29,14 +30,17 @@ const ConsultaClientes = () => {
             try {
                 const clientesApi = new Api();
                 const returnApi = await clientesApi.ObterTodosOsClientes();
-                setClientesList(returnApi);                
+                setClientesList(returnApi);  
+                console.log("Lista de clientes", returnApi);              
 
             } catch (err) {
                 console.log(err);
             }
         }
 
-        obterListaClientes();
+        setTimeout(() => {
+            obterListaClientes();
+        }, 3000);
 
     }, []);
 
@@ -55,6 +59,7 @@ const ConsultaClientes = () => {
     }
 
     const [exibeDadosCliente, setExibeDadosCliente] = useState(false);
+    const [exibeConsultaClientes, setExibeConsultaClientes] = useState(false); 
     const [clienteSelecionado, setClienteSelecionado] = useState(null);
 
     const novoCadastro = () => {
@@ -75,6 +80,10 @@ const ConsultaClientes = () => {
         console.log('grid selectin', selecaoGrid[0].data);
 
         setExibeDadosCliente(true);
+    }
+
+    const filtrarClientes = () => {
+        setExibeConsultaClientes(true);
     }
 
     const alterarCadastro = () => {
@@ -109,10 +118,10 @@ const ConsultaClientes = () => {
                 <Button text="Novo Cliente" icon="pi-plus-circle" action={novoCadastro} />
                 <Button text="Visualizar Informações" icon="pi-external-link" action={abrirCadastro} />
                 <Button text="Alterar Cadastro" icon="pi-pencil" action={alterarCadastro} />
-                <Button text="Pesquisar Cliente" icon="pi-search" />
+                <Button text="Pesquisar Cliente" icon="pi-search" action={filtrarClientes} />
             </GridOptionsBar>
             
-            <div className="ag-theme-balham" style={{ height: '78vh', width: '100%' }} >
+            {/* <div className="ag-theme-balham" style={{ height: '78vh', width: '100%' }} >
                 <AgGridReact
                     columnDefs={columnDefs}
                     rowData={clientesList}
@@ -122,13 +131,13 @@ const ConsultaClientes = () => {
                     gridOptions={{localeText: GridTexts}}
                 >
                 </AgGridReact>
-            </div>
+            </div> */}
 
             {exibeDadosCliente && 
                 (
                     <Modal fechaModalFunc={() => { setExibeDadosCliente(false) }} titulo="Dados do Cliente">
                         <ModalBodyContainer>
-                            <ModalReportSectionInfo>
+                            <ModalHalfBordered>
                                 
                                 <ModalReportTitleContainer>
                                     <ModalReportTitle>Dados Pessoais</ModalReportTitle>                                    
@@ -147,8 +156,8 @@ const ConsultaClientes = () => {
                                     Telefone: <strong>{clienteSelecionado.CLI_FONE}</strong>
                                 </ModalPersonalInfoRow>
 
-                            </ModalReportSectionInfo>
-                            <ModalReportSectionAddress>
+                            </ModalHalfBordered>
+                            <ModalHalfNoBorder>
                                 
                                 <ModalReportTitleContainer>
                                     <ModalReportTitle>Endereços</ModalReportTitle>
@@ -164,7 +173,24 @@ const ConsultaClientes = () => {
                                     </AgGridReact>
                                 </div>
 
-                            </ModalReportSectionAddress>
+                            </ModalHalfNoBorder>
+                        </ModalBodyContainer>
+                    </Modal>
+                )
+            }
+
+
+            {exibeConsultaClientes && 
+                (
+                    <Modal fechaModalFunc={() => { setExibeConsultaClientes(false) }} titulo="Consultar clientes">
+                        <ModalBodyContainer>
+                            <ModalBodyInner>
+                                <GridOptionsBar>
+                                    <Button text="Visualizar Informações" icon="pi-external-link" action={abrirCadastro} />
+                                    <Button text="Alterar Cadastro" icon="pi-pencil" action={alterarCadastro} />
+                                </GridOptionsBar>
+                                <TypeSearch />
+                            </ModalBodyInner>
                         </ModalBodyContainer>
                     </Modal>
                 )

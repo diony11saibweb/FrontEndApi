@@ -1,13 +1,18 @@
 import axios from 'axios';
 
+const apiInstance = axios.create({
+    baseURL: "http://localhost:8000",
+  }
+);
+
 export default class Api {
 
     async ObterTodosOsClientes() {
 
         try {
-            const returnApi = await axios.get('http://172.16.1.30:2006/v1/cadastro');
+            const returnApi = await apiInstance.get('/cadastro');
             
-            return returnApi.data.retorno;    
+            return returnApi.data;    
         } catch (err) {
             console.log(err);
         }
@@ -17,7 +22,7 @@ export default class Api {
     async ObterClientePorParametros(cpfCnpj, nome) {
 
         try {
-            const returnApi = await axios.post('http://172.16.1.30:2006/v1/cadastro/byParam', { "CLI_CNPJ_CPF": cpfCnpj, "CLI_NOME": nome });
+            const returnApi = await apiInstance.post('/cadastro/byParam', { "CLI_CNPJ_CPF": cpfCnpj, "CLI_NOME": nome });
 
             console.log('consulta por parametro', returnApi.data);
         } catch (err) {
@@ -29,13 +34,23 @@ export default class Api {
 
         try {
             if (request.cliente.CLI_ID) {
-                await axios.put('http://172.16.1.30:2006/v1/cadastro', request);
+                await apiInstance.put(`/cadastro/${request.cliente.CLI_ID}`, request);
             } else {
-                await axios.post('http://172.16.1.30:2006/v1/cadastro', request);
+                await apiInstance.post('/cadastro', request);
             }
 
         } catch (err) {
             throw new Error("Falha ao salvar cadastro");
+        }
+    }
+
+    async ConsultarClientes(urlQuery) {
+
+        try {
+            const returnApi = await apiInstance.get(`/cadastro?${urlQuery}`)
+            return returnApi.data;
+        } catch (err) {
+            throw new Error("Não foi possível consultar o cliente");
         }
     }
 }

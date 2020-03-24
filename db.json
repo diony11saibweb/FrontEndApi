@@ -1,0 +1,104 @@
+{
+  "cadastro": [
+    {
+      "id": 1,
+      "CLI_ID": 1,
+      "CLI_NOME": "WELKER ARANTES FERREIRA",
+      "CLI_CNPJ_CPF": "07877887155",
+      "CLI_DATANASC": "1992-09-09T13:30:00.000Z",
+      "CLI_DATACAD": "2020-03-19T10:07:06.000Z",
+      "CLI_FONE": "64 9 8457-9485",
+      "CLIENTE_E": [
+        {
+          "id": 1,
+          "CLIE_ID": 1,
+          "CLIE_CLI_ID": 1,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "RUA VALDIVINA DIVINA RIBEIRO, QD 31 LT 04",
+          "CLIE_BAIRRO": "SANTA EFIGÊNIA",
+          "CLIE_CIDADE": "CALDAS NOVAS",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "CLI_ID": 2,
+      "CLI_NOME": "PAULA FERREIRA DA SILVA",
+      "CLI_CNPJ_CPF": "04073444074",
+      "CLI_DATANASC": "1996-09-03T13:30:00.000Z",
+      "CLI_DATACAD": "2020-03-19T11:15:00.000Z",
+      "CLI_FONE": "64 9 8457-9485",
+      "CLIENTE_E": [
+        {
+          "id": 2,
+          "CLIE_ID": 2,
+          "CLIE_CLI_ID": 2,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "RUA JOAQUIM FIRMINO DOS REIS, QD 31 LT 04",
+          "CLIE_BAIRRO": "SANTA EFIGÊNIA",
+          "CLIE_CIDADE": "CALDAS NOVAS",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "cliente": {
+        "CLI_NOME": "IGOR ARANTES DE CARVALHO",
+        "CLI_CNPJ_CPF": "00427440171",
+        "CLI_DATANASC": "1991/03/01 13:30:00",
+        "CLI_FONE": "64 9 8457-9485",
+        "CLI_DATACAD": "2020/03/22 11:15:00",
+        "CLI_ID": 3
+      },
+      "docs": [
+        {
+          "id": 3,
+          "CLIE_ID": 3,
+          "CLIE_CLI_ID": 3,
+          "CLIE_TIPO": "2",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "AVENIDA BENTO DE GODOY NETO, N 306",
+          "CLIE_BAIRRO": "PARQUE REAL",
+          "CLIE_CIDADE": "CALDAS NOVAS",
+          "CLIE_UF": "GO"
+        },
+        {
+          "CLIE_ENDERECO": "AVENIDA C, N 116",
+          "CLIE_BAIRRO": "ITAGUAÍ 3",
+          "CLIE_CEP": "75689222",
+          "CLIE_CIDADE": "CALDAS NOVAS",
+          "CLIE_UF": "GO",
+          "CLIE_TIPO": "1",
+          "CLIE_CLI_ID": 3,
+          "CLIE_ID": 0
+        }
+      ],
+      "id": 3
+    },
+    {
+      "id": 4,
+      "CLI_ID": 4,
+      "CLI_NOME": "WELKER ARAÚJO FERNANDES",
+      "CLI_CNPJ_CPF": "03878088175",
+      "CLI_DATANASC": "1992-09-09T13:30:00.000Z",
+      "CLI_DATACAD": "2020-03-23T11:15:00.000Z",
+      "CLI_FONE": "64 9 8457-9485",
+      "CLIENTE_E": [
+        {
+          "id": 4,
+          "CLIE_ID": 4,
+          "CLIE_CLI_ID": 4,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "AVENIDA JARDIM BELA VISTA, N 413",
+          "CLIE_BAIRRO": "JARDIM BELA VISTA",
+          "CLIE_CIDADE": "APARECIDA DE GOIÂNIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    }
+  ]
+}
