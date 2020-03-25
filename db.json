@@ -9,8 +9,7 @@
       "CLI_DATACAD": "2020-03-19T10:07:06.000Z",
       "CLI_FONE": "64 9 8457-9485",
       "CLIENTE_E": [
-        {
-          "id": 1,
+        {          
           "CLIE_ID": 1,
           "CLIE_CLI_ID": 1,
           "CLIE_TIPO": "1",
@@ -31,8 +30,7 @@
       "CLI_DATACAD": "2020-03-19T11:15:00.000Z",
       "CLI_FONE": "64 9 8457-9485",
       "CLIENTE_E": [
-        {
-          "id": 2,
+        {          
           "CLIE_ID": 2,
           "CLIE_CLI_ID": 2,
           "CLIE_TIPO": "1",
@@ -45,17 +43,15 @@
       ]
     },
     {
-      "cliente": {
-        "CLI_NOME": "IGOR ARANTES DE CARVALHO",
-        "CLI_CNPJ_CPF": "00427440171",
-        "CLI_DATANASC": "1991/03/01 13:30:00",
-        "CLI_FONE": "64 9 8457-9485",
-        "CLI_DATACAD": "2020/03/22 11:15:00",
-        "CLI_ID": 3
-      },
-      "docs": [
-        {
-          "id": 3,
+      "id": 3,
+      "CLI_ID": 3,
+      "CLI_NOME": "IGOR ARANTES DE CARVALHO",
+      "CLI_CNPJ_CPF": "00427440171",
+      "CLI_DATANASC": "1991/03/01 13:30:00",
+      "CLI_FONE": "64 9 8457-9485",
+      "CLI_DATACAD": "2020/03/22 11:15:00",
+      "CLIENTE_E": [
+        {          
           "CLIE_ID": 3,
           "CLIE_CLI_ID": 3,
           "CLIE_TIPO": "2",
@@ -75,9 +71,8 @@
           "CLIE_CLI_ID": 3,
           "CLIE_ID": 0
         }
-      ],
-      "id": 3
-    },
+      ]
+    },    
     {
       "id": 4,
       "CLI_ID": 4,
@@ -87,8 +82,7 @@
       "CLI_DATACAD": "2020-03-23T11:15:00.000Z",
       "CLI_FONE": "64 9 8457-9485",
       "CLIENTE_E": [
-        {
-          "id": 4,
+        {          
           "CLIE_ID": 4,
           "CLIE_CLI_ID": 4,
           "CLIE_TIPO": "3",

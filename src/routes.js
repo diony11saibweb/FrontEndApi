@@ -2,7 +2,6 @@ import React from 'react';
 import { Switch, Route } from "react-router-dom";
 
 import Home from './pages/Home';
-import Sobre from './pages/Sobre';
 import ConsultaClientes from './pages/ConsultaClientes';
 import FormCliente from './pages/FormCliente';
 

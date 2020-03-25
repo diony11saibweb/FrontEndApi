@@ -3,9 +3,13 @@ import AwesomeDebouncePromise from 'awesome-debounce-promise';
 
 import Api from '~/utils/Api';
 
-import './styles.css';
+// import './styles.css';
 
-export default function TypeSearch() {
+/* ===== Styles ===== */
+import { SearchContainer, InputContainer, SearchInput, ResultsContainer, ResultsItem, CloseButtonContainer, CloseButton } from './styles';
+/* ===== Styles ===== */
+
+export default function TypeSearch({ retornaResultadoFn }) {
 
     const [query, setQuery] = useState("");
     const [results, setResults] = useState([]);
@@ -44,6 +48,8 @@ export default function TypeSearch() {
             
         } else {
             setResults([]);
+
+            retornaResultadoFn(null);
         }
     }
 
@@ -54,51 +60,54 @@ export default function TypeSearch() {
         setResults([]);
         inputRef.current.value = searchResult.CLI_NOME;
         
+        retornaResultadoFn(searchResult);
     }
 
     const cleanInput = () => {
         inputRef.current.value = "";
         setQuery("");
         setResults([]);
+
+        retornaResultadoFn(null);
     }
 
   return (
     
-    <div className="search-container">
+    <SearchContainer>
 
-        <div className="input-container">
-            <input 
+        <InputContainer>
+            <SearchInput 
                 ref={inputRef}
                 placeholder="Pesquisar..."
                 className="search-inputs"                    
                 onChange={(e) => { handleInputChange(e.target.value) }}
             />
             
-            <div className="close-button">
-                <span onClick={() => { cleanInput() }}>Limpar</span>
-            </div>
-        </div>
+            <CloseButtonContainer>
+                <CloseButton onClick={() => { cleanInput() }}><i className="pi pi-times-circle"></i></CloseButton>
+            </CloseButtonContainer>
+        </InputContainer>
         
 
         {results.length > 0 &&
             (
-                <div className="results-container">
+                <ResultsContainer>
                     <ul>
                         {
                             results.map(result => (
-                                <li key={result.id} onClick={() => { selectResult(result) }}>
+                                <ResultsItem key={result.id} onClick={() => { selectResult(result) }}>
                                     {result.CLI_NOME} - {result.CLI_CNPJ_CPF}                                            
-                                </li>
+                                </ResultsItem>
                             ))
                         }
                     </ul>
-                </div>
+                </ResultsContainer>
             )
         }
 
 
 
-    </div>
+    </SearchContainer>
 
   );
 }

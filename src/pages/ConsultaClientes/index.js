@@ -77,7 +77,7 @@ const ConsultaClientes = () => {
         }
 
         setClienteSelecionado(selecaoGrid[0].data);
-        console.log('grid selectin', selecaoGrid[0].data);
+        console.log('grid selectin', selecaoGrid[0].data);       
 
         setExibeDadosCliente(true);
     }
@@ -95,8 +95,22 @@ const ConsultaClientes = () => {
             return;
         }
 
+        if (exibeConsultaClientes) {
+            setExibeConsultaClientes(false)
+        }
+
         browserHistory.push("/clientes/form", selecaoGrid[0].data);
 
+    }
+
+    const fecharModalDadosClientes = () => {
+        
+        // Se o modal foi aberto pela consulta de clientes deve remover o cliente selecionado
+        if (clientePesquisado) {
+            setClientePesquisado(null);
+            setClienteSelecionado(null);
+        }
+        setExibeDadosCliente(false);
     }
 
     const modalGridcolumnDefs = [
@@ -106,6 +120,36 @@ const ConsultaClientes = () => {
         { field: "CLIE_BAIRRO", headerName: "Bairro", resizable: true },
         { field: "CLIE_CIDADE", headerName: "Cidade", resizable: true}
     ];
+
+    const [clientePesquisado, setClientePesquisado] = useState(null);
+
+    const obterClientePesquisado = (cliente) => {
+        
+        setClientePesquisado(cliente);
+    }
+
+    const abrirCadastroClientePesquisado = () => {
+
+        if (clientePesquisado === null || clientePesquisado === undefined){
+            addToast("Nenhum cliente foi selecionado!", { appearance: 'error' })
+            return;
+        }
+
+        setClienteSelecionado(clientePesquisado);
+        setExibeConsultaClientes(false);
+        setExibeDadosCliente(true);
+    }
+
+    const alterarCadastroClientePesquisado = () => {
+
+        if (clientePesquisado === null || clientePesquisado === undefined){
+            addToast("Nenhum cliente foi selecionado!", { appearance: 'error' })
+            return;
+        }
+        
+        setExibeConsultaClientes(false);
+        browserHistory.push("/clientes/form", clientePesquisado);
+    }
 
     return (
         
@@ -135,7 +179,7 @@ const ConsultaClientes = () => {
 
             {exibeDadosCliente && 
                 (
-                    <Modal fechaModalFunc={() => { setExibeDadosCliente(false) }} titulo="Dados do Cliente">
+                    <Modal fechaModalFunc={() => { fecharModalDadosClientes() }} titulo="Dados do Cliente">
                         <ModalBodyContainer>
                             <ModalHalfBordered>
                                 
@@ -185,11 +229,18 @@ const ConsultaClientes = () => {
                     <Modal fechaModalFunc={() => { setExibeConsultaClientes(false) }} titulo="Consultar clientes">
                         <ModalBodyContainer>
                             <ModalBodyInner>
-                                <GridOptionsBar>
-                                    <Button text="Visualizar Informações" icon="pi-external-link" action={abrirCadastro} />
-                                    <Button text="Alterar Cadastro" icon="pi-pencil" action={alterarCadastro} />
-                                </GridOptionsBar>
-                                <TypeSearch />
+
+                                {clientePesquisado &&
+                                    (
+                                        <GridOptionsBar>
+                                            <Button text="Visualizar Informações" icon="pi-external-link" action={abrirCadastroClientePesquisado} />
+                                            <Button text="Alterar Cadastro" icon="pi-pencil" action={alterarCadastroClientePesquisado} />
+                                        </GridOptionsBar>
+                                    )
+                                }                                
+
+                                <TypeSearch retornaResultadoFn={obterClientePesquisado}/>
+
                             </ModalBodyInner>
                         </ModalBodyContainer>
                     </Modal>
