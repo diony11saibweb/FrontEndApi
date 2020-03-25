@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled,{ keyframes } from 'styled-components';
+
+import BaseAnimation from './BaseAnimation';
 
 export const GridOptionsBar = styled.div`
     width: 100%;    
@@ -57,4 +59,13 @@ export const ModalReportTitleContainer = styled(PageTitleContainer)`
 export const ModalReportTitle = styled(PageTitle)`
     font-size: 16px;
     color: #9e9e9e;
+`;
+
+const FadeInEffect = keyframes`  
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+
+export const FadeInAnimation = styled(BaseAnimation)`
+  animation-name: ${FadeInEffect};
 `;

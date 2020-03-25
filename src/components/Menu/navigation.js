@@ -3,25 +3,27 @@ export const navigation = [
   {
     modulo: {
       titulo: "Home",
-      icone: "pi pi-home"
-    },
-    paginas: [
-      {
-        titulo: "Início",
-        path: "/"
-      }
-    ]    
+      icone: "pi pi-home",
+      ativo: false,
+      paginas: [
+        {
+          titulo: "Início",
+          path: "/"
+        }
+      ]
+    }        
   },
   {
     modulo: {
-      titulo: "Clientes",
-      icone: "pi pi-users"
-    },
-    paginas: [
-      {
-        titulo: "Cadastro de Clientes",
-        path: "/clientes"
-      }
-    ]    
+      titulo: "Cadastros",
+      icone: "pi pi-pencil",
+      ativo: true,
+      paginas: [
+        {
+          titulo: "Cadastro de Clientes",
+          path: "/clientes"
+        }
+      ]  
+    }      
   }
 ];

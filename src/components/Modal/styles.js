@@ -1,5 +1,4 @@
-import styled, { keyframes } from 'styled-components';
-import BaseAnimation from './../../styles/BaseAnimation';
+import styled from 'styled-components';
 
 export const BaseModal = styled.div`
     background-color: rgba(0,0,0,0.5);
@@ -38,11 +37,3 @@ export const ModalCloseButton = styled.button`
     }
 `;
 
-const FadeInAnimation = keyframes`  
-  from { opacity: 0; }
-  to { opacity: 1; }
-`;
-
-export const FadeIn = styled(BaseAnimation)`
-  animation-name: ${FadeInAnimation};
-`;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 import styled from 'styled-components';
 
@@ -38,16 +38,20 @@ const AppContainer = styled.div`
   flex-direction: row;
   align-items: flex-start;
   height: 94vh;
+  overflow-y: hidden;
 `;
 
 const SideMenuContainer = styled.aside`
-  width: 11%;
   height: 100%;
+  width: ${props => props.visible ? 14 : 0}rem;
+  overflow-x: hidden;
+  transition: 0.5s;
 `;
 
 const Main = styled.main`
   width: 100%;
   height: 100%;
+  transition: margin-left .5s;
 `;
 
 const MainContainer = styled.div`
@@ -60,10 +64,19 @@ const MainContainer = styled.div`
 /* ============ End Styles ============ */
 
 function App() {
+
+  const [exibeMenu, setExibeMenu] = useState(false);
+
+  const toogleMenu = () => {
+
+    setExibeMenu( () => !exibeMenu );
+  }
+
   return (
     <Router>
       <HeaderContainer>
         <NavBar>
+          <button onClick={toogleMenu}>Menu</button>
           <h3>Saib Web</h3>
         </NavBar>
       </HeaderContainer>
@@ -72,7 +85,7 @@ function App() {
         
         <ToastProvider placement="top-center" autoDismiss={true} autoDismissTimeout={4000} >
 
-          <SideMenuContainer>
+          <SideMenuContainer visible={true}>
             <Menu />
           </SideMenuContainer>
           <Main>

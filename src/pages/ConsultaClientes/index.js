@@ -165,7 +165,7 @@ const ConsultaClientes = () => {
                 <Button text="Pesquisar Cliente" icon="pi-search" action={filtrarClientes} />
             </GridOptionsBar>
             
-            {/* <div className="ag-theme-balham" style={{ height: '78vh', width: '100%' }} >
+            {/* <div className="ag-theme-balham" style={{ height: '70vh', width: '100%' }} >
                 <AgGridReact
                     columnDefs={columnDefs}
                     rowData={clientesList}

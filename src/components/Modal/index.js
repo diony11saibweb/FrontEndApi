@@ -4,8 +4,8 @@ import ModalContainer from './ModalContainer';
 import './styles.css';
 
 /* ======== Styles ========== */
-import { BaseModal, ModalContent, ModalCloseButton, FadeIn } from './styles';
-import { PageTitleContainer, PageTitle } from '~/styles/globalStyles';
+import { BaseModal, ModalContent, ModalCloseButton } from './styles';
+import { PageTitleContainer, PageTitle, FadeInAnimation } from '~/styles/globalStyles';
 
 /* ======== Styles ========== */
 
@@ -13,7 +13,7 @@ const Modal = ({ fechaModalFunc, titulo, children }) => {
     
     return (
         <ModalContainer>
-            <FadeIn>
+            <FadeInAnimation>
                 <BaseModal className="animation-fadein">
                     <ModalContent>
                         <PageTitleContainer>
@@ -25,7 +25,7 @@ const Modal = ({ fechaModalFunc, titulo, children }) => {
                     
                     </ModalContent>          
                 </BaseModal>
-            </FadeIn>
+            </FadeInAnimation>
       </ModalContainer>
     );
 }
