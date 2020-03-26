@@ -17,7 +17,7 @@ export const navigation = [
     modulo: {
       titulo: "Cadastros",
       icone: "pi pi-pencil",
-      ativo: true,
+      ativo: false,
       paginas: [
         {
           titulo: "Cadastro de Clientes",

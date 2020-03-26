@@ -1,4 +1,5 @@
 import styled,{ keyframes } from 'styled-components';
+import { slideInDown, slideOutUp } from "react-animations";
 
 import BaseAnimation from './BaseAnimation';
 

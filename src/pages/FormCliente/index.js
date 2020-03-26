@@ -344,7 +344,7 @@ export default function FormCliente() {
                             <Button text="Excluir Endereço" icon="pi-trash" action={excluirEndereco} />
                         </GridOptionsBar>
                     
-                        <div className="ag-theme-balham" style={{ height: '35vh', width: '100%' }} >
+                        <div className="ag-theme-balham" style={{ height: '28vh', width: '100%' }} >
                             <AgGridReact
                                 columnDefs={columnDefs}
                                 rowData={listaEnderecos}

@@ -22,7 +22,7 @@ import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
-  height: 6vh;
+  height: 8vh;
   
 `;
 
@@ -37,7 +37,7 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  height: 94vh;
+  height: 100vh;
   overflow-y: hidden;
 `;
 
@@ -55,7 +55,8 @@ const Main = styled.main`
 `;
 
 const MainContainer = styled.div`
-  background: #ececec;
+  /* background: #ececec; */
+  background-color: #f2f2f2;
   padding: 0 18px 18px 18px;
   width: 100%;
   height: 100%;
@@ -74,21 +75,28 @@ function App() {
 
   return (
     <Router>
-      <HeaderContainer>
+      {/* <HeaderContainer>
         <NavBar>
           <button onClick={toogleMenu}>Menu</button>
-          <h3>Saib Web</h3>
+          <span><strong>SaibWeb</strong></span>
         </NavBar>
-      </HeaderContainer>
+      </HeaderContainer> */}
 
       <AppContainer>
         
         <ToastProvider placement="top-center" autoDismiss={true} autoDismissTimeout={4000} >
 
-          <SideMenuContainer visible={true}>
+          <SideMenuContainer visible={exibeMenu}>
             <Menu />
           </SideMenuContainer>
           <Main>
+            <HeaderContainer>
+              <NavBar>
+                <button onClick={toogleMenu}>Menu</button>
+                <span><strong>SaibWeb</strong></span>
+              </NavBar>
+            </HeaderContainer>
+
             <MainContainer>
               <Routes />
             </MainContainer>

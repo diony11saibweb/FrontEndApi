@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import { navigation } from './navigation';
-import MenuListaOpcoes from './MenuListaOpcoes';
 
 /* ===== Styles ===== */
-import { SideMenu, ModuleTitle, SideMenuLink, ModuleOptionsContainer } from './styles';
+import { SideMenu, ModuleTitle, SideMenuLink, ModuleOptionsContainer, ToggleIndicator } from './styles';
 /* ===== Styles ===== */
 
 const Menu = () => {
@@ -17,72 +16,55 @@ const Menu = () => {
         setListaOpcoesMenu(navigation);
     }, [listaOpcoesMenu]);
 
-    const [exibeOpcoesHome, setExibeOpcoesHome] = useState(false);
-    const [exibeOpcoesCadastros, setExibeOpcoesCadastros] = useState(false);
-
-    const toggleExibeOpcoes = (tituloModulo) => {
+    const toggleExibeOpcoes = (tituloModulo) => {        
         
-        let tempListaOpcoes = listaOpcoesMenu;
+        setListaOpcoesMenu(() => {
+            let tempListaOpcoes = [];
 
-        tempListaOpcoes.forEach( element => {
-            
-            if (element.modulo.titulo === tituloModulo) {
-                element.modulo.ativo = true;
-            } else {
-                element.modulo.ativo = false;
-            }
-        });
-
-        setListaOpcoesMenu(tempListaOpcoes);
-
-        console.log("toggleExibeOpcoes", tempListaOpcoes);
+            listaOpcoesMenu.forEach(element => {
+                element.modulo.ativo = element.modulo.titulo === tituloModulo;
+                tempListaOpcoes.push(element);
+            })
+            return tempListaOpcoes;
+        })
     }
 
-    const listaOpcoesFn = (paginas, ativo) => {
-        return (
-            <MenuListaOpcoes opcoes={paginas} exibirOpcoes={ativo} />
-        )
+    const desenhaItensMenuFn = (listaOpcoesMenu) => {
+        
+        return listaOpcoesMenu.map(op => (
+            <>
+                <ModuleTitle key={op.modulo.titulo} ativo={op.modulo.ativo} onClick={() => { toggleExibeOpcoes(op.modulo.titulo) }}>
+                    <i className={`pi ${op.modulo.icone}`}></i> 
+                    &nbsp;{op.modulo.titulo}
+                    <ToggleIndicator>
+                        <i className={`pi ${op.modulo.ativo ? "pi-chevron-up" : "pi-chevron-down"}`}></i>
+                    </ToggleIndicator>
+                </ModuleTitle>
+                
+                {op.modulo.ativo ?
+                    (
+                        <ModuleOptionsContainer exibir={op.modulo.ativo}>
+                            {op.modulo.paginas ?
+                                op.modulo.paginas.map(pagina => (
+                                    <p>
+                                        <SideMenuLink to={pagina.path} exact activeStyle={{color: "#bebbbe"}}>{pagina.titulo}</SideMenuLink>
+                                    </p>
+                                ))
+                                : null
+                            }
+                        </ModuleOptionsContainer>                        
+                    )
+                    : null
+                }              
+            </>    
+        ));
     }
 
     return (
-       
-        // <SideMenu>
-        //     <ModuleTitle exibir={exibeOpcoesHome} onClick={toggleOpcoesHome}><i className="pi pi-home"></i> Home</ModuleTitle>
-        //     <ModuleOptionsContainer exibir={exibeOpcoesHome}>
-        //         <p>
-        //             <SideMenuLink to="/" exact>Início</SideMenuLink>
-        //         </p>
-        //     </ModuleOptionsContainer>            
-
-        //     <ModuleTitle exibir={exibeOpcoesCadastros} onClick={toggleOpcoesCadastros}><i className="pi pi-pencil"></i> Cadastros</ModuleTitle>
-        //     <ModuleOptionsContainer exibir={exibeOpcoesCadastros}>
-        //         <p>
-        //             <SideMenuLink to="/clientes" exact>Cadastro de Clientes</SideMenuLink>
-        //         </p>
-        //     </ModuleOptionsContainer>
-                        
-        // </SideMenu>
-
 
         <SideMenu>
 
-            {
-                listaOpcoesMenu.map(nav => (
-
-                    <>
-                        <ModuleTitle 
-                            key={nav.modulo.titulo} 
-                            exibir={nav.modulo.ativo} 
-                            onClick={() => { toggleExibeOpcoes(nav.modulo.titulo) }} 
-                        >
-                            <i className={`pi ${nav.modulo.icone}`}></i> {nav.modulo.titulo}
-                        </ModuleTitle>
-                        
-                        { listaOpcoesFn(nav.modulo.paginas, nav.modulo.ativo) }
-                    </>
-
-                ))
-            }
+            { desenhaItensMenuFn(listaOpcoesMenu) }
 
         </SideMenu>        
             
