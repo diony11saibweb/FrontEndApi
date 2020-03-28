@@ -43,7 +43,7 @@ const AppContainer = styled.div`
 
 const SideMenuContainer = styled.aside`
   height: 100%;
-  width: ${props => props.visible ? 14 : 0}rem;
+  width: ${props => props.visible ? 16 : 0}rem;
   overflow-x: hidden;
   transition: 0.5s;
 `;
@@ -75,19 +75,13 @@ function App() {
 
   return (
     <Router>
-      {/* <HeaderContainer>
-        <NavBar>
-          <button onClick={toogleMenu}>Menu</button>
-          <span><strong>SaibWeb</strong></span>
-        </NavBar>
-      </HeaderContainer> */}
-
+      
       <AppContainer>
         
         <ToastProvider placement="top-center" autoDismiss={true} autoDismissTimeout={4000} >
 
           <SideMenuContainer visible={exibeMenu}>
-            <Menu />
+            <Menu resetState={!exibeMenu} />
           </SideMenuContainer>
           <Main>
             <HeaderContainer>

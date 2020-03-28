@@ -93,6 +93,217 @@
           "CLIE_UF": "GO"
         }
       ]
-    }
+    },
+
+    {
+      "id": 5,
+      "CLI_ID": 5,
+      "CLI_NOME": "ANGELA MARQUES DE CASTRO",
+      "CLI_CNPJ_CPF": "37093574033",
+      "CLI_DATANASC": "1992-04-06T13:30:00.000Z",
+      "CLI_DATACAD": "2020-03-23T11:15:00.000Z",
+      "CLI_FONE": "64 9 8457-9485",
+      "CLIENTE_E": [
+        {          
+          "CLIE_ID": 5,
+          "CLIE_CLI_ID": 5,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "AVENIDA JARDIM BELA VISTA, N 413",
+          "CLIE_BAIRRO": "JARDIM BELA VISTA",
+          "CLIE_CIDADE": "APARECIDA DE GOIÂNIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "CLI_ID": 6,
+      "CLI_NOME": "ANDRESSA OLIVEIRA DE CASTRO",
+      "CLI_CNPJ_CPF": "22161379011",
+      "CLI_DATANASC": "1990-07-01T13:30:00.000Z",
+      "CLI_DATACAD": "2020-03-23T11:15:00.000Z",
+      "CLI_FONE": "64 9 8457-9485",
+      "CLIENTE_E": [
+        {          
+          "CLIE_ID": 6,
+          "CLIE_CLI_ID": 6,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "AVENIDA JARDIM BELA VISTA, N 413",
+          "CLIE_BAIRRO": "JARDIM BELA VISTA",
+          "CLIE_CIDADE": "APARECIDA DE GOIÂNIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "CLI_ID": 7,
+      "CLI_NOME": "BRENDA OLIVEIRA DA SILVA",
+      "CLI_CNPJ_CPF": "46585374002",
+      "CLI_DATANASC": "1990-07-01T13:30:00.000Z",
+      "CLI_DATACAD": "2020-03-23T11:15:00.000Z",
+      "CLI_FONE": "64 9 8457-9485",
+      "CLIENTE_E": [
+        {          
+          "CLIE_ID": 7,
+          "CLIE_CLI_ID": 7,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "AVENIDA JARDIM BELA VISTA, N 413",
+          "CLIE_BAIRRO": "JARDIM BELA VISTA",
+          "CLIE_CIDADE": "APARECIDA DE GOIÂNIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "CLI_ID": 8,
+      "CLI_NOME": "BRUNO RODRIGUES DOS SANTOS",
+      "CLI_CNPJ_CPF": "63907184033",
+      "CLI_DATANASC": "1990-07-01T13:30:00.000Z",
+      "CLI_DATACAD": "2020-03-23T11:15:00.000Z",
+      "CLI_FONE": "64 9 8457-9485",
+      "CLIENTE_E": [
+        {          
+          "CLIE_ID": 8,
+          "CLIE_CLI_ID": 8,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "AVENIDA JARDIM BELA VISTA, N 413",
+          "CLIE_BAIRRO": "JARDIM BELA VISTA",
+          "CLIE_CIDADE": "APARECIDA DE GOIÂNIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "CLI_ID": 9,
+      "CLI_NOME": "ARTUR GOMES DA SILVA",
+      "CLI_CNPJ_CPF": "33839132010",
+      "CLI_DATANASC": "1990-07-01T13:30:00.000Z",
+      "CLI_DATACAD": "2020-03-23T11:15:00.000Z",
+      "CLI_FONE": "64 9 8457-9485",
+      "CLIENTE_E": [
+        {          
+          "CLIE_ID": 9,
+          "CLIE_CLI_ID": 9,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "AVENIDA JARDIM BELA VISTA, N 413",
+          "CLIE_BAIRRO": "JARDIM BELA VISTA",
+          "CLIE_CIDADE": "APARECIDA DE GOIÂNIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "CLI_ID": 10,
+      "CLI_NOME": "JULIANA DOS SANTOS SILVA",
+      "CLI_CNPJ_CPF": "17453060052",
+      "CLI_DATANASC": "1990-07-01T13:30:00.000Z",
+      "CLI_DATACAD": "2020-03-23T11:15:00.000Z",
+      "CLI_FONE": "64 9 8457-9485",
+      "CLIENTE_E": [
+        {          
+          "CLIE_ID": 10,
+          "CLIE_CLI_ID": 10,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "AVENIDA JARDIM BELA VISTA, N 413",
+          "CLIE_BAIRRO": "JARDIM BELA VISTA",
+          "CLIE_CIDADE": "APARECIDA DE GOIÂNIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "CLI_ID": 11,
+      "CLI_NOME": "FELIPE FONTOURA CARDOSO",
+      "CLI_CNPJ_CPF": "15574929058",
+      "CLI_DATANASC": "1990-07-01T13:30:00.000Z",
+      "CLI_DATACAD": "2020-03-23T11:15:00.000Z",
+      "CLI_FONE": "64 9 8457-9485",
+      "CLIENTE_E": [
+        {          
+          "CLIE_ID": 11,
+          "CLIE_CLI_ID": 11,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "AVENIDA JARDIM BELA VISTA, N 413",
+          "CLIE_BAIRRO": "JARDIM BELA VISTA",
+          "CLIE_CIDADE": "APARECIDA DE GOIÂNIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "CLI_ID": 12,
+      "CLI_NOME": "ALAN FERNANDES COSTA",
+      "CLI_CNPJ_CPF": "28682627086",
+      "CLI_DATANASC": "1990-07-01T13:30:00.000Z",
+      "CLI_DATACAD": "2020-03-23T11:15:00.000Z",
+      "CLI_FONE": "64 9 8457-9485",
+      "CLIENTE_E": [
+        {          
+          "CLIE_ID": 12,
+          "CLIE_CLI_ID": 12,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "AVENIDA JARDIM BELA VISTA, N 413",
+          "CLIE_BAIRRO": "JARDIM BELA VISTA",
+          "CLIE_CIDADE": "APARECIDA DE GOIÂNIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "CLI_ID": 13,
+      "CLI_NOME": "ALANA FONTOURA ROCHA",
+      "CLI_CNPJ_CPF": "10587025050",
+      "CLI_DATANASC": "1990-07-01T13:30:00.000Z",
+      "CLI_DATACAD": "2020-03-23T11:15:00.000Z",
+      "CLI_FONE": "64 9 8457-9485",
+      "CLIENTE_E": [
+        {          
+          "CLIE_ID": 13,
+          "CLIE_CLI_ID": 13,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "AVENIDA JARDIM BELA VISTA, N 413",
+          "CLIE_BAIRRO": "JARDIM BELA VISTA",
+          "CLIE_CIDADE": "APARECIDA DE GOIÂNIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "CLI_ID": 14,
+      "CLI_NOME": "MARCELO GUIMARÃES AZEVEDO",
+      "CLI_CNPJ_CPF": "08021085045",
+      "CLI_DATANASC": "1990-07-01T13:30:00.000Z",
+      "CLI_DATACAD": "2020-03-23T11:15:00.000Z",
+      "CLI_FONE": "64 9 8457-9485",
+      "CLIENTE_E": [
+        {          
+          "CLIE_ID": 14,
+          "CLIE_CLI_ID": 14,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "AVENIDA JARDIM BELA VISTA, N 413",
+          "CLIE_BAIRRO": "JARDIM BELA VISTA",
+          "CLIE_CIDADE": "APARECIDA DE GOIÂNIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    }   
   ]
 }

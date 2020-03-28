@@ -38,17 +38,66 @@ const slideInEffect = keyframes`${slideInDown}`;
 const slideOutEffect = keyframes`${slideOutUp}`;
 
 export const ModuleOptionsContainer = styled.div`
-    padding: 10px 0px 10px 20px;
+    padding: 4px 0px 4px 20px;
     background-color: #402064;    
     overflow: hidden;
-    animation: 0.6s ${props => props.exibir ? slideInEffect : slideOutEffect}
+    animation: 0.6s ${props => props.exibir ? slideInEffect : slideOutEffect};
+`;
+
+export const SideMenuSubLevelLink = styled.a`
+    color: #fff;
+    width: 100%;    
+    padding: 12px 6px;
+    background-color: '#391b5b';
+    font-size: 16px;
+    display: block;
+
+    &:hover {
+        color: #9e9e9e;
+        cursor: pointer;
+    }
+`;
+
+export const MenuItemSeparator = styled.div`
+    width: 80%;
+    border-bottom: 1px solid #fff;
 `;
 
 export const SideMenuLink = styled(NavLink)`
     color: #fff;
+    width: 100%;    
+    padding: 12px 6px;
+    background-color: '#391b5b';
+    font-size: 16px;
+    display: block;
     text-decoration: none;
 
     &:hover {
-      color: #9e9e9e;
+        color: #9e9e9e;
+        cursor: pointer;
+    }
+`;
+
+export const SubModuleHeader = styled.div`
+    color: #fff;
+    width: 100%;    
+    padding: 8px 6px;
+    background-color: #391b5b;
+    font-size: 14px;
+    display: block;    
+`;
+
+export const SubModuleBackButton = styled.button`
+    float: left;
+    top: 10px;
+    left: 4px;
+    font-size: 14px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+
+    &:hover {
+        color: #9e9e9e;
+        cursor: pointer;
     }
 `;
