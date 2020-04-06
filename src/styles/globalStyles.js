@@ -1,5 +1,5 @@
 import styled,{ keyframes } from 'styled-components';
-import { slideInDown, slideOutUp } from "react-animations";
+import { slideInDown, slideOutUp, fadeInLeft } from "react-animations";
 
 import BaseAnimation from './BaseAnimation';
 
@@ -61,7 +61,9 @@ export const ModalReportTitle = styled(PageTitle)`
     font-size: 16px;
     color: #9e9e9e;
 `;
+/* ======== CSS do Modal ==========  */
 
+/* ======== Animações ==========  */
 const FadeInEffect = keyframes`  
   from { opacity: 0; }
   to { opacity: 1; }
@@ -70,3 +72,6 @@ const FadeInEffect = keyframes`
 export const FadeInAnimation = styled(BaseAnimation)`
   animation-name: ${FadeInEffect};
 `;
+
+export const fadeInLeftEffect = keyframes`${fadeInLeft}`;
+/* ======== Animações ==========  */

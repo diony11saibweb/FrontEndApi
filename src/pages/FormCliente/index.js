@@ -18,6 +18,7 @@ import Modal from '~/components/Modal';
 
 import '~/index.css';
 import Api from '~/utils/Api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 /* ========= Styles =========== */
@@ -319,7 +320,7 @@ export default function FormCliente() {
                             <PageFormTitle>Dados Pessoais</PageFormTitle>
                         </PageFormTitleContainer>
 
-                        <FormButton type="submit"><i className="pi pi-save"></i> Salvar Cadastro</FormButton>
+                        <FormButton type="submit"><FontAwesomeIcon icon="save" /> Salvar Cadastro</FormButton>
                         <PageFormBodyContainer>
                             <Input name="CLI_NOME" label="Nome Completo:" type="text" width={18} />
                             <Input name="CLI_CNPJ_CPF" label="C.P.F. / C.N.P.J.:" type="text" width={12} />
@@ -339,9 +340,9 @@ export default function FormCliente() {
                         </PageFormTitleContainer>
 
                         <GridOptionsBar>
-                            <Button text="Novo Endereço" icon="pi-plus-circle" action={novoEndereco} />
-                            <Button text="Alterar Endereço" icon="pi-pencil" action={alterarEndereco}  />
-                            <Button text="Excluir Endereço" icon="pi-trash" action={excluirEndereco} />
+                            <Button text="Novo Endereço" icon="plus-circle" action={novoEndereco} />
+                            <Button text="Alterar Endereço" icon="edit" action={alterarEndereco}  />
+                            <Button text="Excluir Endereço" icon="trash-alt" action={excluirEndereco} />
                         </GridOptionsBar>
                     
                         <div className="ag-theme-balham" style={{ height: '28vh', width: '100%' }} >
@@ -376,7 +377,7 @@ export default function FormCliente() {
                                         <Input name="CLIE_UF" label="UF:" type="text" width={5} />
                                     </PageFormBodyContainer>
 
-                                    <ModalFormButton type="submit"><i className="pi pi-check"></i> Confirmar</ModalFormButton>
+                                    <ModalFormButton type="submit"><FontAwesomeIcon icon="check" /> Confirmar</ModalFormButton>
                                 </Form>
                             </PageBodyContainer>
                         

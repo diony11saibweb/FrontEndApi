@@ -3,6 +3,7 @@ import { AgGridReact } from 'ag-grid-react';
 import { useHistory } from "react-router-dom";
 import { useToasts } from 'react-toast-notifications'
 
+
 /* ===== Styles ===== */
 import { PageContainer, ModalHalfBordered, ModalHalfNoBorder, ModalReportTitleContainer, ModalReportTitle, PageTitle, PageTitleContainer, GridOptionsBar, ModalBodyContainer, ModalBodyInner } from '~/styles/globalStyles';
 import { ModalPersonalInfoRow } from './styles';
@@ -159,10 +160,10 @@ const ConsultaClientes = () => {
             </PageTitleContainer>
 
             <GridOptionsBar>
-                <Button text="Novo Cliente" icon="pi-plus-circle" action={novoCadastro} />
-                <Button text="Visualizar Informações" icon="pi-external-link" action={abrirCadastro} />
-                <Button text="Alterar Cadastro" icon="pi-pencil" action={alterarCadastro} />
-                <Button text="Pesquisar Cliente" icon="pi-search" action={filtrarClientes} />
+                <Button text="Novo Cliente" icon="plus-circle" action={novoCadastro} />
+                <Button text="Visualizar Informações" icon="external-link-alt" action={abrirCadastro} />
+                <Button text="Alterar Cadastro" icon="edit" action={alterarCadastro} />
+                <Button text="Pesquisar Cliente" icon="search" action={filtrarClientes} />
             </GridOptionsBar>
             
             {/* <div className="ag-theme-balham" style={{ height: '70vh', width: '100%' }} >

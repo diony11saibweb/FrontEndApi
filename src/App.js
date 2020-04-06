@@ -17,6 +17,8 @@ import 'primeicons/primeicons.css';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 
+import { fadeInLeftEffect } from '~/styles/globalStyles';
+
 /* ============ Styles ============ */
 
 const HeaderContainer = styled.div`
@@ -33,6 +35,20 @@ const NavBar = styled.nav`
   background-color: #ececec;
 `;
 
+const NabvBarButtonMenu = styled.button`
+  padding: 8px 10px;
+  border: none;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const NavBarButtonMenuIcon = styled.i`
+  color: #4e2a77;
+`;
+
 const AppContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -42,10 +58,33 @@ const AppContainer = styled.div`
 `;
 
 const SideMenuContainer = styled.aside`
+  position: fixed;
   height: 100%;
-  width: ${props => props.visible ? 16 : 0}rem;
+  width: ${props => props.visible ? '100%' : '0'};
+  background-color: ${props => props.visible ? 'rgba(0,0,0,0.5)' : 'transparent'};
+  top: 0;
+  left: 0;
   overflow-x: hidden;
-  transition: 0.5s;
+  transition: 0.4s;
+  z-index: 200;
+  display: flex;
+`;
+
+const SideMenuCloseButton = styled.button`
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  border: none;
+  z-index: 210;
+  background-color: #4e2a77;
+  border-radius: 50%;
+  padding: 6px;
+  outline: 0;
+  animation: 1.4s ${fadeInLeftEffect};
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Main = styled.main`
@@ -68,9 +107,9 @@ function App() {
 
   const [exibeMenu, setExibeMenu] = useState(false);
 
-  const toogleMenu = () => {
+  const toggleMenu = () => {
 
-    setExibeMenu( () => !exibeMenu );
+    setExibeMenu(() => !exibeMenu);
   }
 
   return (
@@ -79,14 +118,15 @@ function App() {
       <AppContainer>
         
         <ToastProvider placement="top-center" autoDismiss={true} autoDismissTimeout={4000} >
-
-          <SideMenuContainer visible={exibeMenu}>
-            <Menu resetState={!exibeMenu} />
-          </SideMenuContainer>
+          
+          <Menu exibeMenuProp={exibeMenu} fechaMenuFn={toggleMenu} />
+                      
           <Main>
             <HeaderContainer>
               <NavBar>
-                <button onClick={toogleMenu}>Menu</button>
+                <NabvBarButtonMenu onClick={toggleMenu}>
+                  <NavBarButtonMenuIcon className="pi pi-bars" style={{'fontSize': '28px'}}></NavBarButtonMenuIcon>
+                </NabvBarButtonMenu>
                 <span><strong>SaibWeb</strong></span>
               </NavBar>
             </HeaderContainer>

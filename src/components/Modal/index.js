@@ -2,6 +2,7 @@ import React from 'react';
 
 import ModalContainer from './ModalContainer';
 import './styles.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 /* ======== Styles ========== */
 import { BaseModal, ModalContent, ModalCloseButton } from './styles';
@@ -18,7 +19,9 @@ const Modal = ({ fechaModalFunc, titulo, children }) => {
                     <ModalContent>
                         <PageTitleContainer>
                             <PageTitle>{titulo}</PageTitle>
-                            <ModalCloseButton onClick={fechaModalFunc}><i className="pi pi-times"></i></ModalCloseButton>
+                            <ModalCloseButton onClick={fechaModalFunc}>
+                                <FontAwesomeIcon icon="times" />
+                            </ModalCloseButton>
                         </PageTitleContainer>
                         
                         {children}

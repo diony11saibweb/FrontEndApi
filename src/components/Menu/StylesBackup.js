@@ -135,14 +135,7 @@ export const SubModuleHeader = styled.div`
     padding: 12px 8px;
     background-color: #391b5b;
     font-size: 18px;
-    display: block;
-`;
-
-export const SubModuleHeaderTitle = styled.span`
-    width: 100%;
-    font-size: 18px;
-    color: #fff;
-    margin-left: 8px;
+    display: block;    
 `;
 
 export const SubModuleBackButton = styled.button`
@@ -154,7 +147,6 @@ export const SubModuleBackButton = styled.button`
     border: none;
     color: #fff;
     margin-right: 4px;
-    outline: 0;
 
     &:hover {
         color: #9e9e9e;
