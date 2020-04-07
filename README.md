@@ -27,6 +27,15 @@ Componente de notificações. [Acesse a documentação](https://jossmac.github.i
 
 Biblioteca para gerenciar formulários focada em performance. [Acesse a documentação](https://github.com/Rocketseat/unform#readme)
 
+### Html2canvas
+
+Biblioteca que permite coverter html em imagem através do recurso de Canvas do html 5.
+ [Acesse a documentação](https://html2canvas.hertzen.com/)
+
+### jsPDF
+
+Biblioteca para geração de arquivos PDF com javascript. [Acesse a documentação](https://www.npmjs.com/package/jspdf)
+
 ### Ag-Grid
 
 Componente de grid customizável. [Acesse a documentação](https://www.ag-grid.com/react-grid/)

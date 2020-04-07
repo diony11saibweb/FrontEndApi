@@ -50,6 +50,9 @@ export const ModalHalfNoBorder = styled(ModalHalfBordered)`
 export const ModalBodyInner = styled.div`
     width: 100%;
     padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 export const ModalReportTitleContainer = styled(PageTitleContainer)`

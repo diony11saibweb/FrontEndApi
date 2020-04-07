@@ -18,7 +18,8 @@ import {
     faSave,
     faTrashAlt,
     faCheck,
-    faTimes
+    faTimes,
+    faPrint
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -41,5 +42,6 @@ library.add(
     faSave,
     faTrashAlt,
     faCheck,
-    faTimes
+    faTimes,
+    faPrint
 );

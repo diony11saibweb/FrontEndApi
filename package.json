@@ -16,6 +16,8 @@
     "awesome-debounce-promise": "^2.1.0",
     "axios": "^0.19.2",
     "classnames": "2.2.6",
+    "html2canvas": "^1.0.0-rc.5",
+    "jspdf": "^1.5.3",
     "moment": "^2.24.0",
     "primeicons": "1.0.0",
     "primereact": "^4.1.1",

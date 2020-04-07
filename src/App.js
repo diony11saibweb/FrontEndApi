@@ -99,6 +99,7 @@ const MainContainer = styled.div`
   padding: 0 18px 18px 18px;
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
 `;
 
 /* ============ End Styles ============ */

@@ -16,7 +16,7 @@ export const navigation = [
           {
             titulo: "Contas a Receber",
             icone: "file-invoice-dollar",
-            path: "/",
+            path: "/relatorio",
             identificador: "contas-a-receber"
           },
           {

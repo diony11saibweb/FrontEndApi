@@ -10,6 +10,7 @@ export const BaseModal = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-y: scroll;
 `;
 
 export const ModalContent = styled.div`
