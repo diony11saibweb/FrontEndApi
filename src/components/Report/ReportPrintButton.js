@@ -35,18 +35,20 @@ const ReportPrintButton = ({id, text, icon}) => {
             comp: inputHeightMm <= a4HeightMm, inputHeightPx: input.offsetHeight
         });
         
-
+        /* Cria um print da div em PNG exatamente como está sendo exibida, preservando altura e largura.
+         * Em seguida converte a imagem para PDF.
+         */
         html2canvas(input)
         .then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
             let pdf = null;
-            // Document of a4WidthMm wide and inputHeightMm high
+            // Caso o tamanho da div ultrapasse o valor de uma página A4 faz a quebra de páginas
             if (inputHeightMm > a4HeightMm) {
-            // elongated a4 (system print dialog will handle page breaks)
-            pdf = new jsPDF('p', 'mm', [inputHeightMm+16, a4WidthMm]);
+            
+                pdf = new jsPDF('p', 'mm', [inputHeightMm+16, a4WidthMm]);
             } else {
-            // standard a4
-            pdf = new jsPDF();
+            
+                pdf = new jsPDF();
             }
             
             pdf.addImage(imgData, 'PNG', 0, 0);
@@ -56,7 +58,7 @@ const ReportPrintButton = ({id, text, icon}) => {
 
     return (
     
-        <div className="tc mb4 mt2">
+        <div>
             {/*
             Getting pixel height in milimeters:
             https://stackoverflow.com/questions/7650413/pixel-to-mm-equation/27111621#27111621

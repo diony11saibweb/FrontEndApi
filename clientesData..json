@@ -1,0 +1,589 @@
+{
+  "retorno": [
+    {
+      "CLI_ID": 3,
+      "CLI_CNPJ_CPF": "34599859004",
+      "CLI_NOME": "ALESSANDRA FERNANDES DE SOUZA1",
+      "CLI_DATACAD": "2020-01-12T17:07:06.000Z",
+      "CLI_DATANASC": "1980-03-25T21:29:06.000Z",
+      "CLI_FONE": "62 98532-1265",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 3,
+          "CLIE_ID": 2,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "74621220",
+          "CLIE_ENDERECO": "AVENIDA DOS PIRINEUS",
+          "CLIE_BAIRRO": "PARQUE PRIMAVERA",
+          "CLIE_CIDADE": "JUAZEIRO",
+          "CLIE_UF": "BA"
+        },
+        {
+          "CLIE_CLI_ID": 3,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "2",
+          "CLIE_CEP": "74665220",
+          "CLIE_ENDERECO": "AVENIDA FLAMBOYANT N 343",
+          "CLIE_BAIRRO": "PARQUE DAS LARANJEIRAS",
+          "CLIE_CIDADE": "GOIÂNIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 2,
+      "CLI_CNPJ_CPF": "03979209099",
+      "CLI_NOME": "CARLOS FERNANDO",
+      "CLI_DATACAD": "2020-03-19T20:30:33.000Z",
+      "CLI_DATANASC": "1985-04-01T03:00:00.000Z",
+      "CLI_FONE": "62 98877-8787",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 2,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "2",
+          "CLIE_CEP": "74150210",
+          "CLIE_ENDERECO": "AVENIDA GOIAS N 565",
+          "CLIE_BAIRRO": "SETOR CENTRAL",
+          "CLIE_CIDADE": "GOIÂNIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 28,
+      "CLI_CNPJ_CPF": "03979209016",
+      "CLI_NOME": "CARLOS FERNANDO",
+      "CLI_DATACAD": "2020-03-19T20:27:08.000Z",
+      "CLI_DATANASC": "1985-04-01T03:00:00.000Z",
+      "CLI_FONE": "62 98877-8787",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 28,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "2",
+          "CLIE_CEP": "74150210",
+          "CLIE_ENDERECO": "AVENIDA GOIAS N 565",
+          "CLIE_BAIRRO": "SETOR CENTRAL",
+          "CLIE_CIDADE": "GOIÂNIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 23,
+      "CLI_CNPJ_CPF": "26481266000106",
+      "CLI_NOME": "Cliente Modelo",
+      "CLI_DATACAD": "2020-02-08T11:00:06.000Z",
+      "CLI_DATANASC": "2005-03-10T10:07:06.000Z",
+      "CLI_FONE": "62 93521-1210",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 23,
+          "CLIE_ID": 3,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        },
+        {
+          "CLIE_CLI_ID": 23,
+          "CLIE_ID": 2,
+          "CLIE_TIPO": "2",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        },
+        {
+          "CLIE_CLI_ID": 23,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 4,
+      "CLI_CNPJ_CPF": "60181266000100",
+      "CLI_NOME": "INDUSTRIA E COMERCIO DE CARNES",
+      "CLI_DATACAD": "2020-02-04T11:00:06.000Z",
+      "CLI_DATANASC": "1999-10-18T16:07:06.000Z",
+      "CLI_FONE": "62 93521-1210",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 4,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "2",
+          "CLIE_CEP": "75898023",
+          "CLIE_ENDERECO": "AVENIDA DAS FLORES NUMERO 23",
+          "CLIE_BAIRRO": "SETOR CENTRAL",
+          "CLIE_CIDADE": "ANAPOLIS",
+          "CLIE_UF": "GO"
+        },
+        {
+          "CLIE_CLI_ID": 4,
+          "CLIE_ID": 3,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "74621220",
+          "CLIE_ENDERECO": "AVENIDA DOS PIRINEUS",
+          "CLIE_BAIRRO": "PARQUE ACALANTO",
+          "CLIE_CIDADE": "GOIÂNIA",
+          "CLIE_UF": "GO"
+        },
+        {
+          "CLIE_CLI_ID": 4,
+          "CLIE_ID": 2,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "74621220",
+          "CLIE_ENDERECO": "AVENIDA DOS PIRINEUS",
+          "CLIE_BAIRRO": "PARQUE ACALANTO",
+          "CLIE_CIDADE": "GOIÂNIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 13,
+      "CLI_CNPJ_CPF": "26481266000106",
+      "CLI_NOME": "MOTORBRAS TRANSPORTES EIRELI",
+      "CLI_DATACAD": "2020-02-08T11:00:06.000Z",
+      "CLI_DATANASC": "2005-03-10T10:07:06.000Z",
+      "CLI_FONE": "62 93521-1210",
+      "CLIENTE_E": []
+    },
+    {
+      "CLI_ID": 12,
+      "CLI_CNPJ_CPF": "26481266000106",
+      "CLI_NOME": "MOTORBRAS TRANSPORTES EIRELI",
+      "CLI_DATACAD": "2020-02-08T11:00:06.000Z",
+      "CLI_DATANASC": "2005-03-10T10:07:06.000Z",
+      "CLI_FONE": "62 93521-1210",
+      "CLIENTE_E": []
+    },
+    {
+      "CLI_ID": 5,
+      "CLI_CNPJ_CPF": "26481266000106",
+      "CLI_NOME": "MOTORBRAS TRANSPORTES EIRELI",
+      "CLI_DATACAD": "2020-02-08T11:00:06.000Z",
+      "CLI_DATANASC": "2005-03-10T10:07:06.000Z",
+      "CLI_FONE": "62 93521-1210",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 5,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        },
+        {
+          "CLIE_CLI_ID": 5,
+          "CLIE_ID": 2,
+          "CLIE_TIPO": "2",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        },
+        {
+          "CLIE_CLI_ID": 5,
+          "CLIE_ID": 3,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 17,
+      "CLI_CNPJ_CPF": "26481266000106",
+      "CLI_NOME": "MOTORBRAS TRANSPORTES EIRELI",
+      "CLI_DATACAD": "2020-02-08T11:00:06.000Z",
+      "CLI_DATANASC": "2005-03-10T10:07:06.000Z",
+      "CLI_FONE": "62 93521-1210",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 17,
+          "CLIE_ID": 2,
+          "CLIE_TIPO": "2",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        },
+        {
+          "CLIE_CLI_ID": 17,
+          "CLIE_ID": 3,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        },
+        {
+          "CLIE_CLI_ID": 17,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 14,
+      "CLI_CNPJ_CPF": "26481266000106",
+      "CLI_NOME": "MOTORBRAS TRANSPORTES EIRELI teste",
+      "CLI_DATACAD": "2020-02-08T11:00:06.000Z",
+      "CLI_DATANASC": "2005-03-10T10:07:06.000Z",
+      "CLI_FONE": "62 93521-1210",
+      "CLIENTE_E": []
+    },
+    {
+      "CLI_ID": 1,
+      "CLI_CNPJ_CPF": "03979209004",
+      "CLI_NOME": "PEDRO AUGUSTO DE OLIVEIRA",
+      "CLI_DATACAD": "2020-07-02T17:07:06.000Z",
+      "CLI_DATANASC": "2020-07-02T17:07:06.000Z",
+      "CLI_FONE": "62 98877-8787",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 1,
+          "CLIE_ID": 2,
+          "CLIE_TIPO": "2",
+          "CLIE_CEP": "74150300",
+          "CLIE_ENDERECO": "AVENIDA T9 N 123",
+          "CLIE_BAIRRO": "SETOR MARISTA",
+          "CLIE_CIDADE": "GOIÂNIA",
+          "CLIE_UF": "GO"
+        },
+        {
+          "CLIE_CLI_ID": 1,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "74150250",
+          "CLIE_ENDERECO": "RUA 38 N 23",
+          "CLIE_BAIRRO": "SETOR MARISTA",
+          "CLIE_CIDADE": "GOIÂNIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 11,
+      "CLI_CNPJ_CPF": "77583845674",
+      "CLI_NOME": "ROSEWELTTY",
+      "CLI_DATACAD": "2020-02-12T11:00:06.000Z",
+      "CLI_DATANASC": "2005-03-10T10:07:06.000Z",
+      "CLI_FONE": "62 93521-1210",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 11,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "ANAPOLIS",
+          "CLIE_UF": "PE"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 24,
+      "CLI_CNPJ_CPF": "03878088175",
+      "CLI_NOME": "SAIB",
+      "CLI_DATACAD": "2020-03-19T10:59:36.000Z",
+      "CLI_DATANASC": "1992-09-09T03:00:00.000Z",
+      "CLI_FONE": "992964354",
+      "CLIENTE_E": []
+    },
+    {
+      "CLI_ID": 18,
+      "CLI_CNPJ_CPF": "26481266000106",
+      "CLI_NOME": "SAIB",
+      "CLI_DATACAD": "2020-02-08T11:00:06.000Z",
+      "CLI_DATANASC": "2005-03-10T10:07:06.000Z",
+      "CLI_FONE": "62 93521-1210",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 18,
+          "CLIE_ID": 3,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        },
+        {
+          "CLIE_CLI_ID": 18,
+          "CLIE_ID": 2,
+          "CLIE_TIPO": "2",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        },
+        {
+          "CLIE_CLI_ID": 18,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 22,
+      "CLI_CNPJ_CPF": "26481266000106",
+      "CLI_NOME": "SISTEMA",
+      "CLI_DATACAD": "2020-02-08T11:00:06.000Z",
+      "CLI_DATANASC": "2005-03-10T10:07:06.000Z",
+      "CLI_FONE": "62 93521-1210",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 22,
+          "CLIE_ID": 3,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        },
+        {
+          "CLIE_CLI_ID": 22,
+          "CLIE_ID": 2,
+          "CLIE_TIPO": "2",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        },
+        {
+          "CLIE_CLI_ID": 22,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 21,
+      "CLI_CNPJ_CPF": "26481266000106",
+      "CLI_NOME": "SISTEMA",
+      "CLI_DATACAD": "2020-02-08T11:00:06.000Z",
+      "CLI_DATANASC": "2005-03-10T10:07:06.000Z",
+      "CLI_FONE": "62 93521-1210",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 21,
+          "CLIE_ID": 3,
+          "CLIE_TIPO": "3",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        },
+        {
+          "CLIE_CLI_ID": 21,
+          "CLIE_ID": 2,
+          "CLIE_TIPO": "2",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        },
+        {
+          "CLIE_CLI_ID": 21,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "PETROLINA",
+          "CLIE_UF": "PE"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 27,
+      "CLI_CNPJ_CPF": "04073488324",
+      "CLI_NOME": "Toreba da Silva",
+      "CLI_DATACAD": "2020-03-20T10:53:02.000Z",
+      "CLI_DATANASC": "1990-09-01T03:00:00.000Z",
+      "CLI_FONE": "992964354",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 27,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "Rua Bento de Godoy Neto",
+          "CLIE_BAIRRO": "Parque Real",
+          "CLIE_CIDADE": "Caldas Novas",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 25,
+      "CLI_CNPJ_CPF": "04078488124",
+      "CLI_NOME": "Toreba da Silva",
+      "CLI_DATACAD": "2020-03-20T10:56:48.000Z",
+      "CLI_DATANASC": "1992-09-01T03:00:00.000Z",
+      "CLI_FONE": "992964354",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 25,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "Rua Bento de Godoy Neto",
+          "CLIE_BAIRRO": "Parque Real",
+          "CLIE_CIDADE": "Caldas Novas",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 26,
+      "CLI_CNPJ_CPF": "03373088323",
+      "CLI_NOME": "Toreba da Silva",
+      "CLI_DATACAD": "2020-03-19T20:21:58.000Z",
+      "CLI_DATANASC": "1992-09-01T03:00:00.000Z",
+      "CLI_FONE": "992964354",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 26,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "Rua Bento de Godoy Neto",
+          "CLIE_BAIRRO": "Parque Real",
+          "CLIE_CIDADE": "Caldas Novas",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 19,
+      "CLI_CNPJ_CPF": "03878088175",
+      "CLI_NOME": "Welker arantes",
+      "CLI_DATACAD": "2020-02-14T18:06:00.000Z",
+      "CLI_DATANASC": "1992-09-09T16:30:00.000Z",
+      "CLI_FONE": "992964354",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 19,
+          "CLIE_ID": 0,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "75690000",
+          "CLIE_ENDERECO": "Rua Nelson Jorge",
+          "CLIE_BAIRRO": "Jardim Bela Vista",
+          "CLIE_CIDADE": "APARECIDA DE GOIANIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 20,
+      "CLI_CNPJ_CPF": "03878088175",
+      "CLI_NOME": "Welker arantes",
+      "CLI_DATACAD": "2020-02-14T15:18:59.000Z",
+      "CLI_DATANASC": "1992-09-09T03:00:00.000Z",
+      "CLI_FONE": "992964354",
+      "CLIENTE_E": []
+    },
+    {
+      "CLI_ID": 16,
+      "CLI_CNPJ_CPF": "57773432345",
+      "CLI_NOME": "WESLEY LOPES",
+      "CLI_DATACAD": "2020-02-12T11:00:06.000Z",
+      "CLI_DATANASC": "2005-03-10T10:07:06.000Z",
+      "CLI_FONE": "62 93521-1210",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 16,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA SUL",
+          "CLIE_CIDADE": "ANAPOLIS",
+          "CLIE_UF": "PE"
+        },
+        {
+          "CLIE_CLI_ID": 16,
+          "CLIE_ID": 2,
+          "CLIE_TIPO": "2",
+          "CLIE_CEP": "74564098",
+          "CLIE_ENDERECO": "RUA EDURARDO LP",
+          "CLIE_BAIRRO": "VILA MARIANA",
+          "CLIE_CIDADE": "APARECIDA GYN",
+          "CLIE_UF": "GO"
+        }
+      ]
+    },
+    {
+      "CLI_ID": 15,
+      "CLI_CNPJ_CPF": "57773432345",
+      "CLI_NOME": "WESLEY LOPES TESTE",
+      "CLI_DATACAD": "2020-03-20T16:15:50.000Z",
+      "CLI_DATANASC": "2005-03-01T06:00:00.000Z",
+      "CLI_FONE": "62 93521-1210",
+      "CLIENTE_E": [
+        {
+          "CLIE_CLI_ID": 15,
+          "CLIE_ID": 1,
+          "CLIE_TIPO": "1",
+          "CLIE_CEP": "77890234",
+          "CLIE_ENDERECO": "AV MARECHAL RONDON",
+          "CLIE_BAIRRO": "VILA TESTE",
+          "CLIE_CIDADE": "APARECIDA",
+          "CLIE_UF": "PE"
+        },
+        {
+          "CLIE_CLI_ID": 15,
+          "CLIE_ID": 2,
+          "CLIE_TIPO": "2",
+          "CLIE_CEP": "74564098",
+          "CLIE_ENDERECO": "RUA EDURARDO LP",
+          "CLIE_BAIRRO": "VILA MARIANA",
+          "CLIE_CIDADE": "APARECIDA DE GOIANIA",
+          "CLIE_UF": "GO"
+        }
+      ]
+    }
+  ]
+}
