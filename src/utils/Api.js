@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { clientesData } from './clientesData';
 
 const apiInstance = axios.create({
     baseURL: "http://localhost:8000",
@@ -10,9 +11,12 @@ export default class Api {
     async ObterTodosOsClientes() {
 
         try {
-            const returnApi = await apiInstance.get('/cadastro');
+            // const returnApi = await apiInstance.get('/cadastro');            
+            // return returnApi.data;
+
             
-            return returnApi.data;    
+            return clientesData.retorno;  
+
         } catch (err) {
             console.log(err);
         }

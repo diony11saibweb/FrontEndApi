@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { PDFViewer, StyleSheet } from "@react-pdf/renderer";
 
-import { ReportPage, PrintButton } from '~/components/Report';
+import Report from '~/components/Report';
 import Button from '~/components/Button';
 import Modal from '~/components/Modal';
  
@@ -8,6 +9,14 @@ import Modal from '~/components/Modal';
 import { PageContainer, GridOptionsBar, ModalBodyContainer, ModalBodyInner } from '~/styles/globalStyles';
 import './styles.css';
 /* ===== Styles ===== */
+
+const reportStyles = StyleSheet.create({
+  pdfViewer: {
+    width: "100%",
+    height: "90vh",
+    display: "flex"
+  }
+})
 
 const reportData = [
     {
@@ -121,81 +130,60 @@ const RelatorioClientes = () => {
 
     const [visualizaImpressao, setVisualizaImpressao] = useState(false);
 
-    const desenhaRelatorioFn = (vizualizaModoImpressao) => {
+    // const desenhaRelatorioFn = (vizualizaModoImpressao) => {
 
-        return (
-            <ReportPage 
-                id={vizualizaModoImpressao ? "clientes-inadimplentes-print" : "clientes-inadimplentes"} 
-                visualizarImpressao={vizualizaModoImpressao}
-            >
-                <h3 style={{textAlign: 'center', marginBottom: 12}}>
-                    Clientes Inadimplentes
-                </h3>
-                <div className="report-resume-container">
-                    <span>
-                        <strong>Data Inicial:</strong> 01/03/2020
-                    </span>
-                    <span>
-                        <strong>Data Final:</strong> 07/03/2020
-                    </span>
-                    <span>
-                        <strong>Total de Clientes:</strong> 21
-                    </span>
-                </div>
+    //     return (
+    //         <ReportPage 
+    //             id={vizualizaModoImpressao ? "clientes-inadimplentes-print" : "clientes-inadimplentes"} 
+    //             visualizarImpressao={vizualizaModoImpressao}
+    //         >
+    //             <h3 style={{textAlign: 'center', marginBottom: 12}}>
+    //                 Clientes Inadimplentes
+    //             </h3>
+    //             <div className="report-resume-container">
+    //                 <span>
+    //                     <strong>Data Inicial:</strong> 01/03/2020
+    //                 </span>
+    //                 <span>
+    //                     <strong>Data Final:</strong> 07/03/2020
+    //                 </span>
+    //                 <span>
+    //                     <strong>Total de Clientes:</strong> 21
+    //                 </span>
+    //             </div>
 
-                <div className="report-details-header">
-                    <div className="report-details-header-cell">
-                        Nome Completo
-                    </div>
-                    <div className="report-details-header-cell">
-                        Parcelas
-                    </div>
-                    <div className="report-details-header-cell">
-                        Valor (RS)
-                    </div>
-                </div>
+    //             <div className="report-details-header">
+    //                 <div className="report-details-header-cell">
+    //                     Nome Completo
+    //                 </div>
+    //                 <div className="report-details-header-cell">
+    //                     Parcelas
+    //                 </div>
+    //                 <div className="report-details-header-cell">
+    //                     Valor (RS)
+    //                 </div>
+    //             </div>
 
-                {reportData.map(element => (
-                    <div className="report-details-body"  key={element.nome}>
-                        <div className="report-details-body-cell">
-                        {element.nome}
-                        </div>
-                        <div className="report-details-body-cell">
-                        {element.qtdParcelas}
-                        </div>
-                        <div className="report-details-body-cell">
-                        {element.valor}
-                        </div>
-                    </div>
-                ))}
-            </ReportPage>
-        )
-    }
+    //             {reportData.map(element => (
+    //                 <div className="report-details-body"  key={element.nome}>
+    //                     <div className="report-details-body-cell">
+    //                     {element.nome}
+    //                     </div>
+    //                     <div className="report-details-body-cell">
+    //                     {element.qtdParcelas}
+    //                     </div>
+    //                     <div className="report-details-body-cell">
+    //                     {element.valor}
+    //                     </div>
+    //                 </div>
+    //             ))}
+    //         </ReportPage>
+    //     )
+    // }
 
     return (
         <PageContainer>
-            <GridOptionsBar>
-                {/* <PrintButton id="clientes-inadimplentes" text="Imprimir" icon="print" /> */}
-                <Button text="Visualizar Impressão" icon="print" action={() => { setVisualizaImpressao(true) }} />
-            </GridOptionsBar>
-
-            {desenhaRelatorioFn(false)}
-
-            {visualizaImpressao &&
-                (
-                    <Modal fechaModalFunc={() => { setVisualizaImpressao(false) }} titulo="Impressão - Clientes Inadimplentes">
-                        <ModalBodyContainer>
-                            <ModalBodyInner>
-                                <GridOptionsBar>
-                                    <PrintButton id="clientes-inadimplentes-print" text="Imprimir" icon="print" />
-                                </GridOptionsBar>
-
-                                {desenhaRelatorioFn(true)}
-                            </ModalBodyInner>
-                        </ModalBodyContainer>
-                    </Modal>
-                )
-            }
+            <PDFViewer style={reportStyles.pdfViewer} children={<Report />} />
         </PageContainer>
     )
 };
