@@ -18,6 +18,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 
 import { fadeInLeftEffect } from '~/styles/globalStyles';
+import Navbar from './components/Navbar/index';
 
 /* ============ Styles ============ */
 
@@ -29,14 +30,15 @@ const HeaderContainer = styled.div`
 `;
 
 const NavBar = styled.nav`
-  padding: 16px 20px 0 20px;
+  padding: 6px 20px 0 20px;
   height: 100%;
   width: 100%;
   background-color: #ececec;
 `;
 
 const NabvBarButtonMenu = styled.button`
-  padding: 8px 10px;
+  padding: 2px;
+  margin-right: 10px;
   border: none;
   background-color: transparent;
 
@@ -123,14 +125,15 @@ function App() {
           <Menu exibeMenuProp={exibeMenu} fechaMenuFn={toggleMenu} />
                       
           <Main>
-            <HeaderContainer>
+            {/* <HeaderContainer>
               <NavBar>
                 <NabvBarButtonMenu onClick={toggleMenu}>
                   <NavBarButtonMenuIcon className="pi pi-bars" style={{'fontSize': '28px'}}></NavBarButtonMenuIcon>
                 </NabvBarButtonMenu>
                 <span><strong>SaibWeb</strong></span>
               </NavBar>
-            </HeaderContainer>
+            </HeaderContainer> */}
+            <Navbar toggleMenuFn={toggleMenu} />
 
             <MainContainer>
               <Routes />

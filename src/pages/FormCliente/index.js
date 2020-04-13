@@ -172,11 +172,21 @@ export default function FormCliente() {
 
     const excluirEndereco = () => {
 
+        /* esta função acessa diretamente o valor de uma linha, 
+         * ao contrário da função getSelectedNodes que acessa os nós selecionados
+         * Obs.: o nó (rowNode) contém propriedades internas da grid e o data, que é o 
+         * valor exibido na tela
+        */
         const selecaoGrid = gridInstance.api.getSelectedRows();
 
         if (selecaoGrid === null || selecaoGrid === undefined || selecaoGrid.length === 0)
             return;
         console.log('endereço selecionado', selecaoGrid);
+
+        /* a função updateRowData recebe um objeto onde a chave indica a operação
+         * que deve ser realizada como update, remove e o valor é usado para substituir
+         * o valor antigo.
+        */
         gridInstance.api.updateRowData({ remove: selecaoGrid });
         atualizaListaEnderecos();
     }
@@ -195,6 +205,7 @@ export default function FormCliente() {
 
         try {
             formRef.current.setErrors({});
+            
             const schema = Yup.object().shape({
                 CLI_NOME: Yup.string()
                     .required("Preencha o campo Nome"),

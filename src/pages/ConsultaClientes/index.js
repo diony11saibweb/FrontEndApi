@@ -41,10 +41,21 @@ const ConsultaClientes = () => {
 
         setTimeout(() => {
             obterListaClientes();
-        }, 3000);
+        }, 300);
 
     }, []);
 
+    /* Define propriedades das colundas da grid de clientes.
+     * field: propriedade do objeto que deve ser exibido em tela
+     * headerName: título da coluna
+     * checkboxSelectionn: exibe um checkbox que é marcado de acordo com a seleção de linha
+     * width: largura da coluna em pixels
+     * lockVisible: impede que a coluna seja removida
+     * sortable: permite que a coluna seja ordenável
+     * filter: permite filtrar valores da coluna
+     * resizable: permite redimencionar a largura da coluna
+     * valueFormatter: função que permite formatar os valores da coluna
+    */
     const columnDefs = [
         { field: "CLI_ID", headerName: "ID", checkboxSelection: true, width: 100, lockVisible: true },
         { field: "CLI_NOME", headerName: "Nome", sortable: true, filter: true, resizable: true},
@@ -56,7 +67,16 @@ const ConsultaClientes = () => {
 
     const onGridReady = (params) => {
               
+        /* obtem acesso às APIs da Ag-grid */
         setGridInstance({ api: params.api, columnApi: params.columnApi });
+    }
+
+    /* estiliza as linhas da grid dinamicamente */
+    const estilizaLinhaGrid = (params) => {
+
+        if (params.data.CLI_NOME === "PEDRO AUGUSTO DE OLIVEIRA") {
+            return {background: 'red', color: '#fff'};
+        }
     }
 
     const [exibeDadosCliente, setExibeDadosCliente] = useState(false);
@@ -70,6 +90,7 @@ const ConsultaClientes = () => {
 
     const abrirCadastro = () => {
 
+        /* obtem as linhas selecionadas (grid node) através da API da Ag-grid */
         const selecaoGrid = gridInstance.api.getSelectedNodes();
 
         if (selecaoGrid === null || selecaoGrid === undefined || selecaoGrid.length === 0){
@@ -166,7 +187,16 @@ const ConsultaClientes = () => {
                 <Button text="Pesquisar Cliente" icon="search" action={filtrarClientes} />
             </GridOptionsBar>
             
-            <div className="ag-theme-balham" style={{ height: '70vh', width: '100%' }} >
+            {/* Sempre é necessário envolver o componente de grid em uma div contendo
+              * o nome da classe referente ao tema que se deseja usar.
+              * columnDefs: efine o nome das colunas e as propriedades que devem ser exibidas
+              * rowData: a lista de itens que devem ser exibidos na grid
+              * rowSelection: modo de seleção, podendo ser 'single' ou 'multiple'
+              * onGridReady: função que é executada assim que o componente é executado
+              * gridOptions: opções diversas (está sendo usado para traduzir textos da grid)
+              * getRowStyle: função que estiliza as linhas da grid de forma dinâmica
+            */}
+            <div className="ag-theme-balham" style={{ height: '65vh', width: '100%' }} >
                 <AgGridReact
                     columnDefs={columnDefs}
                     rowData={clientesList}
@@ -174,6 +204,7 @@ const ConsultaClientes = () => {
                     animateRows
                     onGridReady={onGridReady}
                     gridOptions={{localeText: GridTexts}}
+                    getRowStyle={estilizaLinhaGrid}
                 >
                 </AgGridReact>
             </div>
