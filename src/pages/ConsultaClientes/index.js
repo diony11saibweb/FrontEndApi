@@ -234,13 +234,13 @@ const ConsultaClientes = () => {
                                 {clientePesquisado &&
                                     (
                                         <GridOptionsBar>
-                                            <Button text="Visualizar Informações" icon="pi-external-link" action={abrirCadastroClientePesquisado} />
-                                            <Button text="Alterar Cadastro" icon="pi-pencil" action={alterarCadastroClientePesquisado} />
+                                            <Button text="Visualizar Informações" icon="external-link-alt" action={abrirCadastroClientePesquisado} />
+                                            <Button text="Alterar Cadastro" icon="edit" action={alterarCadastroClientePesquisado} />
                                         </GridOptionsBar>
                                     )
                                 }                                
 
-                                <TypeSearch retornaResultadoFn={obterClientePesquisado}/>
+                                <TypeSearch retornaResultadoFn={obterClientePesquisado} tipoPesquisa="GET_CLIENTES"/>
 
                             </ModalBodyInner>
                         </ModalBodyContainer>

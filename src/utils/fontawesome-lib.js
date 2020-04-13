@@ -19,7 +19,8 @@ import {
     faTrashAlt,
     faCheck,
     faTimes,
-    faPrint
+    faPrint,
+    faTimesCircle
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -43,5 +44,6 @@ library.add(
     faTrashAlt,
     faCheck,
     faTimes,
-    faPrint
+    faPrint,
+    faTimesCircle
 );
