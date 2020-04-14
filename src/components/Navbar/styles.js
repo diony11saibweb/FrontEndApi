@@ -17,6 +17,7 @@ export const NavBar = styled.nav`
 export const NavBarButtonMenu = styled.button`
   padding: 2px;
   margin-right: 10px;
+  margin-top: 12px;
   border: none;
   background-color: transparent;
 
@@ -26,7 +27,7 @@ export const NavBarButtonMenu = styled.button`
 `;
 
 export const NavbarLogo = styled.img`
-  width: 80px;
+  width: 4vw;
 `;
 
 export const NavbarOptionsContainer = styled.div`
@@ -47,7 +48,7 @@ export const NavbarOptionsCell = styled.div`
 `;
 
 export const NavbarUserAvatar = styled.div`
-  width: 40px;
+  width: 3vw;
   height: 6vh;
   border-radius: 50%;
   border: 1px solid #d9d7d7;
@@ -63,5 +64,5 @@ export const NavbarUserName = styled.span`
   font-size: 14px;
   font-weight: 600;
   color: #9e9e9e;
-  margin-top: 10px;
+  margin-top: 3vh;
 `;

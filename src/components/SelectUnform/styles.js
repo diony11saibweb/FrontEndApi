@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-export const InputContainer = styled.div`
+export const SelectContainer = styled.div`
     padding: 6px;
     display: flex;
     flex-direction: column;
+    width: ${props => props.inputWidth || 16}vw;
 `;
 
 export const FormLabel = styled.label`

@@ -19,6 +19,7 @@ import Modal from '~/components/Modal';
 import '~/index.css';
 import Api from '~/utils/Api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import SelectUnform from '~/components/SelectUnform';
 
 
 /* ========= Styles =========== */
@@ -87,6 +88,11 @@ export default function FormCliente() {
     const modalFormRef = useRef(null);
 
     const { addToast } = useToasts();
+
+    const optTiposEndereco = [
+        { value: "1", label: "Residencial" },
+        { value: "2", label: "Comercial" }
+    ];
 
     useEffect(() => {
         const routeState = browserHistory.location.state;
@@ -259,13 +265,16 @@ export default function FormCliente() {
     const gerenciaFormEndereco = async (data, { reset }) => {
 
         try {
+            console.log("form endreço", data);
+
             modalFormRef.current.setErrors({});
             const schema = Yup.object().shape({
                 CLIE_ENDERECO: Yup.string().required("Preencha o campo Logradouro"),
                 CLIE_BAIRRO: Yup.string().required("Preencha o campo Bairro"),
                 CLIE_CEP: Yup.string().required("Preencha o campo CEP"),
                 CLIE_CIDADE: Yup.string().required("Preencha o campo Cidade"),
-                CLIE_UF: Yup.string().required("Preencha o campo UF")
+                CLIE_UF: Yup.string().required("Preencha o campo UF"),
+                CLIE_TIPO: Yup.string().required("Selecione o Tipo Endereço")
             });
 
             await schema.validate(data, {
@@ -287,7 +296,7 @@ export default function FormCliente() {
                 gridInstance.api.updateRowData({ update: [enderecoTemp] });
                 atualizaListaEnderecos();
             } else {
-                data.CLIE_TIPO = "1";
+                // data.CLIE_TIPO = "1";
                 data.CLIE_CLI_ID = clienteAtual.CLI_ID;
                 data.CLIE_ID = 0;
 
@@ -312,7 +321,8 @@ export default function FormCliente() {
             modalFormRef.current.setFieldError('CLIE_BAIRRO', validationErrors.CLIE_BAIRRO);
             modalFormRef.current.setFieldError('CLIE_CEP', validationErrors.CLIE_CEP);
             modalFormRef.current.setFieldError('CLIE_CIDADE', validationErrors.CLIE_CIDADE);
-            modalFormRef.current.setFieldError('CLIE_UF', validationErrors.CLIE_UF);                       
+            modalFormRef.current.setFieldError('CLIE_UF', validationErrors.CLIE_UF);
+            modalFormRef.current.setFieldError('CLIE_TIPO', validationErrors.CLIE_TIPO);                     
         }
     }
 
@@ -336,7 +346,7 @@ export default function FormCliente() {
                             <Input name="CLI_NOME" label="Nome Completo:" type="text" width={18} />
                             <Input name="CLI_CNPJ_CPF" label="C.P.F. / C.N.P.J.:" type="text" width={12} />
                             <Input name="CLI_DATANASC" label="Nascimento:" type="text" width={12} mask="99/99/9999" />
-                            <Input name="CLI_FONE" label="Telefone:" type="text" width={12} />
+                            <Input name="CLI_FONE" label="Telefone:" type="text" width={12} />                            
                         </PageFormBodyContainer>                        
 
                     </PageSectionInfo>                   
@@ -381,11 +391,20 @@ export default function FormCliente() {
                                 <Form ref={modalFormRef} onSubmit={gerenciaFormEndereco}>
 
                                     <PageFormBodyContainer>
-                                        <Input name="CLIE_ENDERECO" label="Logradouro:" type="text" />
-                                        <Input name="CLIE_BAIRRO" label="Bairro:" type="text" />
-                                        <Input name="CLIE_CEP" label="CEP:" type="text" width={10} />
-                                        <Input name="CLIE_CIDADE" label="Cidade:" type="text" width={12} />
-                                        <Input name="CLIE_UF" label="UF:" type="text" width={5} />
+                                        <Input name="CLIE_ENDERECO" label="Logradouro:" type="text" width={16} />
+                                        <Input name="CLIE_BAIRRO" label="Bairro:" type="text" width={16} />
+                                        <Input name="CLIE_CEP" label="CEP:" type="text" width={8} />
+                                        <Input name="CLIE_CIDADE" label="Cidade:" type="text" width={8} />
+                                        <Input name="CLIE_UF" label="UF:" type="text" width={4} />
+                                        
+                                        <SelectUnform 
+                                            name="CLIE_TIPO" 
+                                            label="Tipo Endereço:" 
+                                            width={12} 
+                                            optionsList={optTiposEndereco}
+                                            isClearable={true}
+                                            isSearchable={true}
+                                        />
                                     </PageFormBodyContainer>
 
                                     <ModalFormButton type="submit"><FontAwesomeIcon icon="check" /> Confirmar</ModalFormButton>
