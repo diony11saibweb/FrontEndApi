@@ -4,6 +4,14 @@ import { useField } from '@unform/core';
 
 import { SelectContainer, FormLabel } from './styles';
 
+const customStyles = {
+  control: () => ({
+    borderColor: '#9e9e9e',
+    borderWidth: 1,
+    borderStyle: 'solid'
+  })
+}
+
 export default function SelectUnform({name, label, width, optionsList, ...rest }) {
 
   const selectRef = useRef(null);
@@ -43,6 +51,15 @@ export default function SelectUnform({name, label, width, optionsList, ...rest }
         classNamePrefix="react-select"
         options={optionsList}
         {...rest}
+        
+        theme={theme => ({
+          ...theme,                   
+          colors: {
+            ...theme.colors,
+            primary: '#b196d0',
+            primary25: '#e6d4fb'
+          }
+        })}
       />
 
       {error && <span style={{ color: "#f00", display: 'block' }}>{error}</span>}

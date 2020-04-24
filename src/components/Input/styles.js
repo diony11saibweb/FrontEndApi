@@ -14,12 +14,12 @@ export const FormLabel = styled.label`
 `;
 
 export const FormInput = styled.input`
-    padding: 6px 12px;
+    padding: 8px 12px;
     border-radius: 6px;
-    border: 1px solid #9e9e9e;
+    border: 1px solid #cac8c8;
     font-size: 15px;
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 1.3;
     color: #495057;
     background-color: #fff;
     /* width: 16rem; */
