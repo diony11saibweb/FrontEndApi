@@ -35,8 +35,20 @@ export default function SelectUnform({name, label, width, optionsList, ...rest }
           return ref.state.value.value;
         }
       },
+      setValue: (StateManager, Value) => {
+        if (Value) {
+          if (Value instanceof Object) {
+            StateManager.state.value = Value;
+          } else {
+            const objValue = optionsList.find((opt) => opt.value === Value);
+            StateManager.state.value = objValue;
+          }
+        } else {
+          StateManager.state.value = null;
+        }
+      },
     });
-  }, [fieldName, registerField, rest.isMulti]);
+  }, [fieldName, optionsList, registerField, rest.isMulti]);
 
 
   return (

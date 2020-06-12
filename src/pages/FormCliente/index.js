@@ -149,18 +149,25 @@ export default function FormCliente() {
 
         setEnderecoSelecionado(selecaoGrid[0]);
         setExibeModalEndereco(true);
-        
-        setTimeout(() => {
-    
-            modalFormRef.current.setData({
-                CLIE_CEP: selecaoGrid[0].CLIE_CEP,
-                CLIE_ENDERECO: selecaoGrid[0].CLIE_ENDERECO,
-                CLIE_BAIRRO: selecaoGrid[0].CLIE_BAIRRO,
-                CLIE_CIDADE: selecaoGrid[0].CLIE_CIDADE,
-                CLIE_UF: selecaoGrid[0].CLIE_UF
-            });
 
-        }, 300);
+        modalFormRef.current.setFieldValue('CLIE_ENDERECO', selecaoGrid[0].CLIE_ENDERECO);
+        modalFormRef.current.setFieldValue('CLIE_BAIRRO', selecaoGrid[0].CLIE_BAIRRO);
+        modalFormRef.current.setFieldValue('CLIE_CEP', selecaoGrid[0].CLIE_CEP);
+        modalFormRef.current.setFieldValue('CLIE_CIDADE', selecaoGrid[0].CLIE_CIDADE);
+        modalFormRef.current.setFieldValue('CLIE_UF', selecaoGrid[0].CLIE_UF);
+        modalFormRef.current.setFieldValue('CLIE_TIPO', selecaoGrid[0].CLIE_TIPO);
+        
+        // setTimeout(() => {
+    
+        //     modalFormRef.current.setData({
+        //         CLIE_CEP: selecaoGrid[0].CLIE_CEP,
+        //         CLIE_ENDERECO: selecaoGrid[0].CLIE_ENDERECO,
+        //         CLIE_BAIRRO: selecaoGrid[0].CLIE_BAIRRO,
+        //         CLIE_CIDADE: selecaoGrid[0].CLIE_CIDADE,
+        //         CLIE_UF: selecaoGrid[0].CLIE_UF
+        //     });
+
+        // }, 300);
 
     }
 
@@ -382,39 +389,40 @@ export default function FormCliente() {
 
             </PageBodyContainer>
             
-            {exibeModalEndereco &&
+            
+                <Modal
+                    title="FORMULÁRIO DE ENDEREÇO"
+                    size="lg"
+                    isOpen={exibeModalEndereco}
+                    closeDialogFn={() => { setExibeModalEndereco(false) }}
+                >
+                    
+                    <PageBodyContainer>
+                        <Form ref={modalFormRef} onSubmit={gerenciaFormEndereco}>
 
-                (
-                    <Modal fechaModalFunc={() => { setExibeModalEndereco(false) }} titulo="Formulário de Endereço">
-                        
-                            <PageBodyContainer>
-                                <Form ref={modalFormRef} onSubmit={gerenciaFormEndereco}>
+                            <PageFormBodyContainer>
+                                <Input name="CLIE_ENDERECO" label="Logradouro:" type="text" width={16} />
+                                <Input name="CLIE_BAIRRO" label="Bairro:" type="text" width={16} />
+                                <Input name="CLIE_CEP" label="CEP:" type="text" width={8} />
+                                <Input name="CLIE_CIDADE" label="Cidade:" type="text" width={8} />
+                                <Input name="CLIE_UF" label="UF:" type="text" width={4} />
+                                
+                                <SelectUnform 
+                                    name="CLIE_TIPO" 
+                                    label="Tipo Endereço:" 
+                                    width={12} 
+                                    optionsList={optTiposEndereco}
+                                    isClearable={true}
+                                    isSearchable={true}
+                                />
+                            </PageFormBodyContainer>
 
-                                    <PageFormBodyContainer>
-                                        <Input name="CLIE_ENDERECO" label="Logradouro:" type="text" width={16} />
-                                        <Input name="CLIE_BAIRRO" label="Bairro:" type="text" width={16} />
-                                        <Input name="CLIE_CEP" label="CEP:" type="text" width={8} />
-                                        <Input name="CLIE_CIDADE" label="Cidade:" type="text" width={8} />
-                                        <Input name="CLIE_UF" label="UF:" type="text" width={4} />
-                                        
-                                        <SelectUnform 
-                                            name="CLIE_TIPO" 
-                                            label="Tipo Endereço:" 
-                                            width={12} 
-                                            optionsList={optTiposEndereco}
-                                            isClearable={true}
-                                            isSearchable={true}
-                                        />
-                                    </PageFormBodyContainer>
-
-                                    <ModalFormButton type="submit"><FontAwesomeIcon icon="check" /> Confirmar</ModalFormButton>
-                                </Form>
-                            </PageBodyContainer>
-                        
-                    </Modal>
-                )
-
-            }
+                            <ModalFormButton type="submit"><FontAwesomeIcon icon="check" /> Confirmar</ModalFormButton>
+                        </Form>
+                    </PageBodyContainer>
+                    
+                </Modal>
+                
 
         </PageContainer>
     )
