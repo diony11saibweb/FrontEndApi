@@ -1,10 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
   height: 8vh;
-  
 `;
 
 export const NavBar = styled.nav`
@@ -53,7 +52,7 @@ export const NavbarUserAvatar = styled.div`
   border-radius: 50%;
   border: 1px solid #d9d7d7;
   box-shadow: 2px 4px 8px #d9d7d7;
-  background-image: url('https://avatars3.githubusercontent.com/u/8881422?s=460&u=556988fc43256221e43e865ed8b4f35c29638eb9&v=4');
+  background-image: url("https://avatars3.githubusercontent.com/u/8881422?s=460&u=556988fc43256221e43e865ed8b4f35c29638eb9&v=4");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;

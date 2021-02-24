@@ -1,24 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import Routes from './routes';
+import Routes from "./routes";
 
-import Menu from './components/Menu';
+import Menu from "./components/Menu";
 
-import { ToastProvider } from 'react-toast-notifications'
+import { ToastProvider } from "react-toast-notifications";
 
 /* CSS da lib PrimeReact */
-import 'primereact/resources/themes/nova-light/theme.css';
-import 'primereact/resources/primereact.min.css';
-import 'primeicons/primeicons.css';
+import "primereact/resources/themes/nova-light/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 
 /* CSS da lib AG-Grid */
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+import "ag-grid-community/dist/styles/ag-grid.css";
+import "ag-grid-community/dist/styles/ag-theme-balham.css";
 
-import { fadeInLeftEffect } from '~/styles/globalStyles';
-import Navbar from './components/Navbar/index';
+import { fadeInLeftEffect } from "~/styles/globalStyles";
+import Navbar from "./components/Navbar/index";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 /* ============ Styles ============ */
 
@@ -26,7 +28,6 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
   height: 8vh;
-  
 `;
 
 const NavBar = styled.nav`
@@ -62,12 +63,13 @@ const AppContainer = styled.div`
 const SideMenuContainer = styled.aside`
   position: fixed;
   height: 100%;
-  width: ${props => props.visible ? '100%' : '0'};
-  background-color: ${props => props.visible ? 'rgba(0,0,0,0.5)' : 'transparent'};
+  width: ${(props) => (props.visible ? "100%" : "0")};
+  background-color: ${(props) =>
+    props.visible ? "rgba(0,0,0,0.5)" : "transparent"};
   top: 0;
   left: 0;
   overflow-x: hidden;
-  transition: 0.4s;
+  transition: 0.8s;
   z-index: 200;
   display: flex;
 `;
@@ -82,7 +84,7 @@ const SideMenuCloseButton = styled.button`
   border-radius: 50%;
   padding: 6px;
   outline: 0;
-  animation: 1.4s ${fadeInLeftEffect};
+  animation: 1.6s ${fadeInLeftEffect};
 
   &:hover {
     cursor: pointer;
@@ -92,7 +94,7 @@ const SideMenuCloseButton = styled.button`
 const Main = styled.main`
   width: 100%;
   height: 100%;
-  transition: margin-left .5s;
+  transition: margin-left 0.5s;
 `;
 
 const MainContainer = styled.div`
@@ -107,23 +109,22 @@ const MainContainer = styled.div`
 /* ============ End Styles ============ */
 
 function App() {
-
   const [exibeMenu, setExibeMenu] = useState(false);
 
   const toggleMenu = () => {
-
     setExibeMenu(() => !exibeMenu);
-  }
+  };
 
   return (
     <Router>
-      
       <AppContainer>
-        
-        <ToastProvider placement="top-center" autoDismiss={true} autoDismissTimeout={4000} >
-          
+        <ToastProvider
+          placement="top-center"
+          autoDismiss={true}
+          autoDismissTimeout={4000}
+        >
           <Menu exibeMenuProp={exibeMenu} fechaMenuFn={toggleMenu} />
-                      
+
           <Main>
             {/* <HeaderContainer>
               <NavBar>
@@ -139,9 +140,7 @@ function App() {
               <Routes />
             </MainContainer>
           </Main>
-
-        </ToastProvider>   
-        
+        </ToastProvider>
       </AppContainer>
     </Router>
   );
