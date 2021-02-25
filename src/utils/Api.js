@@ -1,14 +1,14 @@
 import axios from "axios";
 import { clientesData } from "./clientesData";
 
-const apiInstance = axios.create({
-  baseURL: "http://localhost:8000",
+const api = axios.create({
+  baseURL: "http://172.16.1.30:2006",
 });
 
 export default class Api {
   async ObterTodosOsClientes() {
     try {
-      const x = axios.get(`http://172.16.1.30:2006/v1/cadastro`).then((res) => {
+      const x = api.get(`/v1/cadastro`).then((res) => {
         return res.data.retorno;
       });
       //   return clientesData.retorno;
@@ -20,7 +20,7 @@ export default class Api {
 
   async ObterClientePorParametros(cpfCnpj, nome) {
     try {
-      const returnApi = await apiInstance.post("/cadastro/byParam", {
+      const returnApi = await api.post("/cadastro/byParam", {
         CLI_CNPJ_CPF: cpfCnpj,
         CLI_NOME: nome,
       });
@@ -34,9 +34,9 @@ export default class Api {
   async SalvarDadosCliente(request) {
     try {
       if (request.cliente.CLI_ID) {
-        await apiInstance.put(`/cadastro/${request.cliente.CLI_ID}`, request);
+        await api.put(`/cadastro/${request.cliente.CLI_ID}`, request);
       } else {
-        await apiInstance.post("/cadastro", request);
+        await api.post("/cadastro", request);
       }
     } catch (err) {
       throw new Error("Falha ao salvar cadastro");
@@ -45,7 +45,7 @@ export default class Api {
 
   async ConsultarClientes(urlQuery) {
     try {
-      const returnApi = await apiInstance.get(`/cadastro?${urlQuery}`);
+      const returnApi = await api.get(`/cadastro?${urlQuery}`);
       return returnApi.data;
     } catch (err) {
       throw new Error("Não foi possível consultar o cliente");

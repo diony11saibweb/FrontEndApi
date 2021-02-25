@@ -134,11 +134,11 @@ const Menu = ({ exibeMenuProp, fechaMenuFn }) => {
                 &nbsp;&nbsp;
                 {modulo.titulo}
                 <ToggleIndicator>
-                  <i
-                    className={
-                      modulo.ativo ? `pi pi-chevron-up` : `pi pi-chevron-down`
-                    }
-                  ></i>
+                  {modulo.ativo ? (
+                    <FontAwesomeIcon icon="angle-up" />
+                  ) : (
+                    <FontAwesomeIcon icon="angle-down" />
+                  )}
                 </ToggleIndicator>
               </ModuleTitle>
 
@@ -158,7 +158,7 @@ const Menu = ({ exibeMenuProp, fechaMenuFn }) => {
                           &nbsp;&nbsp;
                           {itemMenu.titulo}
                           <ToggleIndicator>
-                            <i className="pi pi-chevron-right"></i>
+                            <FontAwesomeIcon icon="angle-right" />
                           </ToggleIndicator>
                         </SideMenuSubLevelLink>
                       ) : (
@@ -186,14 +186,14 @@ const Menu = ({ exibeMenuProp, fechaMenuFn }) => {
       return (
         <Fragment>
           <SideMenu>
-            <SideMenuSubLevel>
+            <SideMenuSubLevel className="m-0 p-0">
               <SubModuleHeader className="py-3 px-4 text-decoration-none">
                 <SubModuleBackButton
                   onClick={() => {
                     voltarNivelMenu();
                   }}
                 >
-                  <FontAwesomeIcon icon="arrow-left" />
+                  <FontAwesomeIcon icon="angle-left" />
                 </SubModuleBackButton>
 
                 <SubModuleHeaderTitle className="py-3 px-4 text-decoration-none">
@@ -218,7 +218,7 @@ const Menu = ({ exibeMenuProp, fechaMenuFn }) => {
                           &nbsp;&nbsp;
                           {subnivelItem.titulo}
                           <ToggleIndicator>
-                            <i className="pi pi-chevron-right"></i>
+                            <FontAwesomeIcon icon="angle-right" />
                           </ToggleIndicator>
                         </SideMenuSubLevelLink>
                       ) : (
@@ -285,7 +285,7 @@ const Menu = ({ exibeMenuProp, fechaMenuFn }) => {
                   data-iscapture="true"
                   className="my-1"
                 >
-                  <i className="pi pi-home"></i>
+                  <FontAwesomeIcon icon="home" />
                 </SideMenuSubLevelButtonIndicator>
 
                 <ReactTooltip

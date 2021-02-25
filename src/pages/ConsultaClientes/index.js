@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { useHistory } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
-import { Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 /* ===== Styles ===== */
 import {
@@ -21,7 +21,7 @@ import { ModalPersonalInfoRow } from "./styles";
 /* ===== Styles ===== */
 
 import "~/index.css";
-import Button from "~/components/Button";
+import CustomButton from "~/components/CustomButton";
 import Utils from "~/utils/utils";
 import GridTexts from "~/utils/gridTexts";
 import Modal from "~/components/Modal";
@@ -218,33 +218,41 @@ const ConsultaClientes = () => {
   return (
     <PageContainer>
       <PageTitleContainer>
-        <Row>
-          <Col>
-            <PageTitle>Cadastro de Clientes</PageTitle>
-          </Col>
-          <Col className="d-flex justify-content-end">
-            <Button
-              text="Novo Cliente"
-              icon="plus-circle"
-              action={novoCadastro}
-            />
-            <Button
-              text="Visualizar Informações"
-              icon="external-link-alt"
-              action={abrirCadastro}
-            />
-            <Button
-              text="Alterar Cadastro"
-              icon="edit"
-              action={alterarCadastro}
-            />
-            <Button
-              text="Pesquisar Cliente"
-              icon="search"
-              action={filtrarClientes}
-            />
-          </Col>
-        </Row>
+        <Container fluid>
+          <Row>
+            <Col md={6}>
+              <PageTitle>Cadastro de Clientes</PageTitle>
+            </Col>
+            <Col md={6} className="d-flex justify-content-end">
+              <Row>
+                <Col sm={6} className="align-items-stretch">
+                  <CustomButton
+                    text="Novo Cliente"
+                    icon="plus-circle"
+                    action={novoCadastro}
+                  />
+                  <CustomButton
+                    text="Visualizar Informações"
+                    icon="external-link-alt"
+                    action={abrirCadastro}
+                  />
+                </Col>
+                <Col sm={6} className="align-items-stretch">
+                  <CustomButton
+                    text="Alterar Cadastro"
+                    icon="edit"
+                    action={alterarCadastro}
+                  />
+                  <CustomButton
+                    text="Pesquisar Cliente"
+                    icon="search"
+                    action={filtrarClientes}
+                  />
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
       </PageTitleContainer>
 
       {/* Sempre é necessário envolver o componente de grid em uma div contendo
@@ -335,12 +343,12 @@ const ConsultaClientes = () => {
             <ModalBodyInner>
               {clientePesquisado && (
                 <GridOptionsBar>
-                  <Button
+                  <CustomButton
                     text="Visualizar Informações"
                     icon="external-link-alt"
                     action={abrirCadastroClientePesquisado}
                   />
-                  <Button
+                  <CustomButton
                     text="Alterar Cadastro"
                     icon="edit"
                     action={alterarCadastroClientePesquisado}

@@ -8,7 +8,7 @@ export const InputContainer = styled.div`
 `;
 
 export const FormLabel = styled.label`
-  color: #9e9e9e;
+  color: #4e2a77;
   font-size: 14px;
   margin-bottom: 6px;
   font-weight: 600;

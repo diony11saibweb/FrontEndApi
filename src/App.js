@@ -8,11 +8,6 @@ import Menu from "./components/Menu";
 
 import { ToastProvider } from "react-toast-notifications";
 
-/* CSS da lib PrimeReact */
-import "primereact/resources/themes/nova-light/theme.css";
-import "primereact/resources/primereact.min.css";
-import "primeicons/primeicons.css";
-
 /* CSS da lib AG-Grid */
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";

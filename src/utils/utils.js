@@ -113,6 +113,31 @@ export default class Utils {
     return value;
   }
 
+  static DateFormatterCustom(date) {
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+    let formatterDay;
+    if (day < 10) {
+      formatterDay = "0" + day;
+    } else {
+      formatterDay = day;
+    }
+
+    let formatterMonth;
+    if (month < 10) {
+      formatterMonth = "0" + month;
+    } else {
+      formatterMonth = month;
+    }
+
+    let dateFormatted =
+      year + "/" + formatterMonth + "/" + formatterDay + " 00:00:00";
+
+    return dateFormatted;
+  }
+
   static DateParser(value) {
     if (/^\d{2}\/\d{2}\/\d{4}$/.test(value)) {
       const dateArray = value.split("/");

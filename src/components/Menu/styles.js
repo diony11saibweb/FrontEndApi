@@ -40,14 +40,15 @@ export const SideMenu = styled.div`
   padding: 0;
   background-color: #4e2a77 !important;
   height: 100%;
-  width: 22rem;
+  width: 20rem;
 `;
 
 export const SideMenuSubLevel = styled.div`
   padding: 0;
-  background-color: #3d1d61;
+  margin: 0;
+  background-color: #4e2a77;
   height: 100%;
-  width: 17rem;
+  width: 20rem;
   animation: 0.4s ${fadeInLeftEffect};
 `;
 

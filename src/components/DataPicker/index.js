@@ -1,51 +1,73 @@
-import React, { useEffect, useRef } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useRef, useState, useEffect, Fragment } from "react";
+import ReactDatePicker from "react-datepicker";
+import { InputContainer, FormLabel } from "./styles";
 import { useField } from "@unform/core";
-import TextField from "@material-ui/core/TextField";
+import "react-datepicker/dist/react-datepicker.css";
+import styled from "styled-components";
+import "./style.css";
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    display: "flex",
-    flexWrap: "wrap",
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: 200,
-  },
-}));
-/* ============= Styles =============== */
+const DatePicker = ({ name, label, ...rest }) => {
+  const Custom = styled.div`
+    .something {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid #cac8c8;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: #495057;
+      background-color: #fff;
+      width: 100%;
 
-/* ============= End Styles =============== */
+      .react-datepicker-wrapper {
+        width: 100% !important;
+      }
+    }
+  `;
 
-const Input = ({ name, label, width, ...rest }) => {
-  const inputRef = useRef(null);
-  const classes = useStyles();
-  const { fieldName, defaultValue = "", registerField, error } = useField(name);
+  const datepickerRef = useRef(null);
+  const { fieldName, registerField, defaultValue, error } = useField(name);
+  const [date, setDate] = useState(defaultValue || null);
 
   useEffect(() => {
     registerField({
       name: fieldName,
-      ref: inputRef.current,
-      path: "value",
+      ref: datepickerRef.current,
+      clearValue: (ref) => {
+        ref.clear();
+      },
+      setValue: (e, v) => {
+        setDate(new Date(v)); // <---- Setting up default value
+      },
+      getValue: () => {
+        return datepickerRef.current.props.selected; // to get selected value from Date picker's props
+        // OR
+        return Date.toString(); // to get selected value from state it self
+      },
     });
   }, [fieldName, registerField]);
+
   return (
-    <form className={classes.container} noValidate>
-      <TextField
-        ref={inputRef}
-        id={fieldName}
-        label={label}
-        type="date"
-        defaultValue="2017-05-24"
-        className={classes.textField}
-        {...rest}
-        InputLabelProps={{
-          shrink: true,
-        }}
-      />
-    </form>
+    <Fragment>
+      <InputContainer>
+        {label && <FormLabel htmlFor={fieldName}>{label}</FormLabel>}
+        <Custom>
+          <ReactDatePicker
+            placeholderText="Selecione uma data!"
+            className="something w-100"
+            ref={datepickerRef}
+            selected={date}
+            style={{ width: "100%" }}
+            onChange={setDate}
+            {...rest}
+          />
+        </Custom>
+        {error && (
+          <span style={{ color: "#f00", display: "block" }}>{error}</span>
+        )}
+      </InputContainer>
+    </Fragment>
   );
 };
 
-export default Input;
+export default DatePicker;

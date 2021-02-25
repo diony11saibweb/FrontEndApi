@@ -5,8 +5,8 @@ import * as Yup from "yup";
 import { AgGridReact } from "ag-grid-react";
 import { useHistory } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
-
-import { Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import { nameMask, cpfOrCnpjMask, phoneMask } from "~/utils/mask";
 
 /* ========= Styles =========== */
 import {
@@ -18,6 +18,7 @@ import {
 /* ========= Styles =========== */
 
 import Button from "~/components/Button";
+import CustomButton from "~/components/CustomButton";
 import Utils from "~/utils/utils";
 import GridTexts from "~/utils/gridTexts";
 import Input from "~/components/Input";
@@ -36,6 +37,7 @@ const PageBodyContainer = styled.section`
   flex-direction: column;
   border: 1px solid #ededed;
   border-radius: 4px;
+  padding: 6px;
 `;
 
 const PageSectionInfo = styled.div`
@@ -229,28 +231,27 @@ export default function FormCliente() {
   };
 
   const gerenciaFormCliente = async (data, { reset }) => {
-    if (listaEnderecos.length <= 0) {
-      addToast("O cliente precisa ter pelo menos um endereço cadastrado!", {
-        appearance: "error",
-      });
-      return;
-    }
+    // if (listaEnderecos.length <= 0) {
+    //   addToast("O cliente precisa ter pelo menos um endereço cadastrado!", {
+    //     appearance: "error",
+    //   });
+    //   return;
+    // }
 
     try {
       formRef.current.setErrors({});
+
+      data.CLI_DATANASC = Utils.DateFormatterCustom(data.CLI_DATANASC);
 
       const schema = Yup.object().shape({
         CLI_NOME: Yup.string().required("Preencha o campo Nome"),
         CLI_CNPJ_CPF: Yup.string()
           .required("Preencha o campo CPF / CNPJ")
-          .matches(/(^[0-9]{11}$)|(^[0-9]{14}$)/g, "CPF ou CNPJ Inválido"),
-        CLI_DATANASC: Yup.string()
-          .required("Preencha o campo Nascimento")
-          .matches(
-            /(^\d{2}\/\d{2}\/\d{4}$)|(^\d{2}\/\d{2}\/\d{4} \d{1,2}:\d{1,2}$)/g,
-            "Informe a data no formato DD/MM/YYY HH:MM"
-          ),
-        CLI_FONE: Yup.string().required("Preencha o campo Telefone"),
+          .min(14, "Falta dígitos"),
+        CLI_DATANASC: Yup.string().required("Preencha o campo Nascimento"),
+        CLI_FONE: Yup.string()
+          .min(14, "Falta dígitos")
+          .required("Preencha o campo Telefone"),
       });
 
       await schema.validate(data, {
@@ -259,11 +260,12 @@ export default function FormCliente() {
 
       console.log("DATA DE CADASTRO", clienteAtual.CLI_DATACAD);
       console.log("dados do formulário", data);
-      data.CLI_DATANASC = Utils.DateParser(data.CLI_DATANASC);
+
       data.CLI_DATACAD = clienteAtual.CLI_DATACAD
-        ? Utils.DateParser(clienteAtual.CLI_DATACAD)
-        : Utils.DateParser(new Date(Date.now()));
-      data.CLI_ID = clienteAtual.CLI_ID;
+        ? Utils.DateFormatterCustom(clienteAtual.CLI_DATACAD)
+        : Utils.DateFormatterCustom(new Date(Date.now()));
+
+      data.CLI_ID = clienteAtual.CLI_ID || 0;
 
       const request = {
         cliente: data,
@@ -271,6 +273,7 @@ export default function FormCliente() {
       };
 
       const api = new Api();
+
       await api.SalvarDadosCliente(request);
 
       reset();
@@ -373,152 +376,170 @@ export default function FormCliente() {
 
   return (
     <PageContainer>
-      <PageTitleContainer>
-        <PageTitle>Formulário de Cliente</PageTitle>
-      </PageTitleContainer>
+      <Container fluid>
+        <PageTitleContainer>
+          <PageTitle>Formulário de Cliente</PageTitle>
+        </PageTitleContainer>
 
-      <PageBodyContainer>
-        <Form ref={formRef} onSubmit={gerenciaFormCliente}>
-          <PageSectionInfo>
+        <PageBodyContainer>
+          <Form ref={formRef} onSubmit={gerenciaFormCliente}>
+            <PageSectionInfo>
+              <PageFormTitleContainer>
+                <PageFormTitle>Dados Pessoais</PageFormTitle>
+              </PageFormTitleContainer>
+              <PageFormBodyContainer>
+                <Container fluid>
+                  <Row>
+                    <Col xl={3} md={6}>
+                      <Input
+                        name="CLI_NOME"
+                        label="Nome Completo"
+                        type="text"
+                        width="100%"
+                        onChange={(e) => {
+                          nameMask(e.target);
+                        }}
+                      />
+                    </Col>
+                    <Col xl={3} md={6}>
+                      <Input
+                        name="CLI_CNPJ_CPF"
+                        label="C.P.F. / C.N.P.J"
+                        type="text"
+                        width="100%"
+                        onChange={(e) => {
+                          cpfOrCnpjMask(e.target);
+                        }}
+                      />
+                    </Col>
+
+                    <Col xl={3} md={6}>
+                      <DatePicker
+                        name="CLI_DATANASC"
+                        label="Nasc"
+                        type="text"
+                        width="100%"
+                        mask="99/99/9999"
+                      />
+                    </Col>
+                    <Col xl={3} md={6}>
+                      <Input
+                        name="CLI_FONE"
+                        label="Telefone"
+                        type="text"
+                        width="100%"
+                        onChange={(e) => {
+                          phoneMask(e.target);
+                        }}
+                      />
+                    </Col>
+                  </Row>
+
+                  <Row className="flex-row-reverse">
+                    <Col xl={2} md={3}>
+                      <CustomButton text="Criar"></CustomButton>
+                    </Col>
+                  </Row>
+                </Container>
+              </PageFormBodyContainer>
+            </PageSectionInfo>
+          </Form>
+
+          <PageSectionAddress>
             <PageFormTitleContainer>
-              <PageFormTitle>Dados Pessoais</PageFormTitle>
+              <PageFormTitle>Endereços</PageFormTitle>
             </PageFormTitleContainer>
-            <PageFormBodyContainer>
-              <Row className="w-100">
-                <Col md={6}>
-                  <Input
-                    className="text-capitalize"
-                    name="CLI_NOME"
-                    label="Nome Completo"
-                    type="text"
-                    width="100%"
-                  />
-                </Col>
-                <Col md={6}>
-                  <Input
-                    name="CLI_CNPJ_CPF"
-                    label="C.P.F. / C.N.P.J"
-                    type="text"
-                    width="100%"
-                  />
-                </Col>
+            <div
+              className="ag-theme-balham"
+              style={{ height: "28vh", width: "100%" }}
+            >
+              <AgGridReact
+                columnDefs={columnDefs}
+                rowData={listaEnderecos}
+                rowSelection="single"
+                animateRows
+                onGridReady={onGridReady}
+                gridOptions={{ localeText: GridTexts }}
+              ></AgGridReact>
+            </div>
+          </PageSectionAddress>
+          <Row className="flex-row-reverse">
+            <Col xl={2} md={3}>
+              <CustomButton
+                text="Novo Endereço"
+                icon="plus-circle"
+                action={novoEndereco}
+              ></CustomButton>
+            </Col>
+            <Col xl={2} md={3}>
+              <CustomButton text="Alterar Endereço" icon="edit"></CustomButton>
+            </Col>
+            <Col xl={2} md={3}>
+              <CustomButton
+                text="Excluir Endereço"
+                icon="trash-alt"
+              ></CustomButton>
+            </Col>
+          </Row>
+        </PageBodyContainer>
 
-                <Col md={6}>
-                  <DatePicker
-                    name="CLI_DATANASC"
-                    label="Nasc"
-                    type="text"
-                    width="100%"
-                    mask="99/99/9999"
-                  />
-                  {/* <Input
-                    name="CLI_DATANASC"
-                    label="Nasc"
-                    type="text"
-                    width="100%"
-                    mask="99/99/9999"
-                  /> */}
-                </Col>
-                <Col md={6}>
-                  <Input
-                    name="CLI_FONE"
-                    label="Telefone"
-                    type="text"
-                    width="100%"
-                  />
-                </Col>
-                <Row className="w-100">
-                  <Col md={3}>
-                    <Button
-                      className="px-4 w-100"
-                      text=" Criar "
-                      icon="plus-circle"
-                      type="submit"
-                    />
+        <Modal
+          title="Formulário de Endereço"
+          size="md"
+          isOpen={exibeModalEndereco}
+          closeDialogFn={() => {
+            setExibeModalEndereco(false);
+          }}
+        >
+          <PageBodyContainer>
+            <Form ref={modalFormRef} onSubmit={gerenciaFormEndereco}>
+              <PageFormBodyContainer>
+                <Container fluid>
+                  <Row>
+                    <Col md={4}>
+                      <Input
+                        name="CLIE_ENDERECO"
+                        label="Logradouro"
+                        type="text"
+                      />
+                    </Col>
+                    <Col md={4}>
+                      <Input name="CLIE_BAIRRO" label="Bairro" type="text" />
+                    </Col>
+                    <Col md={4}>
+                      <Input name="CLIE_CEP" label="CEP:" type="text" />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md={4}>
+                      <Input name="CLIE_CIDADE" label="Cidade:" type="text" />
+                    </Col>
+                    <Col md={4}>
+                      <Input name="CLIE_UF" label="UF" type="text" />
+                    </Col>
+                    <Col md={4}>
+                      <SelectUnform
+                        name="CLIE_TIPO"
+                        label="Tipo Endereço"
+                        optionsList={optTiposEndereco}
+                        isClearable={true}
+                        isSearchable={true}
+                      />
+                    </Col>
+                  </Row>
+                </Container>
+              </PageFormBodyContainer>
+              <Container fluid>
+                <Row className="flex-row-reverse">
+                  <Col xl={2} md={3}>
+                    <CustomButton text="Criar"></CustomButton>
                   </Col>
                 </Row>
-              </Row>
-            </PageFormBodyContainer>
-          </PageSectionInfo>
-        </Form>
-
-        <PageSectionAddress>
-          <PageFormTitleContainer>
-            <PageFormTitle>Endereços</PageFormTitle>
-          </PageFormTitleContainer>
-
-          <GridOptionsBar className="d-flex justify-content-end pr-3">
-            <Button
-              text="Novo Endereço"
-              icon="plus-circle"
-              action={novoEndereco}
-            />
-            <Button
-              text="Alterar Endereço"
-              icon="edit"
-              action={alterarEndereco}
-            />
-            <Button
-              text="Excluir Endereço"
-              icon="trash-alt"
-              action={excluirEndereco}
-            />
-          </GridOptionsBar>
-
-          <div
-            className="ag-theme-balham"
-            style={{ height: "28vh", width: "100%" }}
-          >
-            <AgGridReact
-              columnDefs={columnDefs}
-              rowData={listaEnderecos}
-              rowSelection="single"
-              animateRows
-              onGridReady={onGridReady}
-              gridOptions={{ localeText: GridTexts }}
-            ></AgGridReact>
-          </div>
-        </PageSectionAddress>
-      </PageBodyContainer>
-
-      <Modal
-        title="FORMULÁRIO DE ENDEREÇO"
-        size="lg"
-        isOpen={exibeModalEndereco}
-        closeDialogFn={() => {
-          setExibeModalEndereco(false);
-        }}
-      >
-        <PageBodyContainer>
-          <Form ref={modalFormRef} onSubmit={gerenciaFormEndereco}>
-            <PageFormBodyContainer>
-              <Input
-                name="CLIE_ENDERECO"
-                label="Logradouro"
-                type="text"
-                width={16}
-              />
-              <Input name="CLIE_BAIRRO" label="Bairro" type="text" width={16} />
-              <Input name="CLIE_CEP" label="CEP:" type="text" width={8} />
-              <Input name="CLIE_CIDADE" label="Cidade:" type="text" width={8} />
-              <Input name="CLIE_UF" label="UF" type="text" width={4} />
-
-              <SelectUnform
-                name="CLIE_TIPO"
-                label="Tipo Endereço"
-                width={12}
-                optionsList={optTiposEndereco}
-                isClearable={true}
-                isSearchable={true}
-              />
-            </PageFormBodyContainer>
-
-            <ModalFormButton type="submit">
-              <FontAwesomeIcon icon="check" /> Confirmar
-            </ModalFormButton>
-          </Form>
-        </PageBodyContainer>
-      </Modal>
+              </Container>
+            </Form>
+          </PageBodyContainer>
+        </Modal>
+      </Container>
     </PageContainer>
   );
 }

@@ -4,6 +4,7 @@ import {
   HeaderContainer,
   NavBar,
   NavBarButtonMenu,
+  MenuIcon,
   NavbarLogo,
   NavbarOptionsContainer,
   NavbarOptionsCell,
@@ -11,14 +12,16 @@ import {
   NavbarUserName,
 } from "./styles";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { useHistory } from "react-router-dom";
 
 import logo from "~/assets/logo.svg";
-import { Row, Col } from "react-bootstrap";
 import SelectUnform from "~/components/SelectUnform";
 import { Form } from "@unform/web";
 import * as Yup from "yup";
-import Button from "~/components/Button";
+import CustomButton from "~/components/CustomButton";
+import { Container, Row, Col } from "react-bootstrap";
 
 export default function Navbar({ toggleMenuFn }) {
   const formRef = useRef(null);
@@ -41,52 +44,53 @@ export default function Navbar({ toggleMenuFn }) {
   return (
     <HeaderContainer>
       <NavBar>
-        <Row>
-          <Col xs={6} className="">
-            <NavBarButtonMenu
-              className=" p-0 m-0 p-2 mt-2 align-bottom"
-              onClick={toggleMenuFn}
-            >
-              <i
-                className="pi pi-bars p-0 m-0"
-                style={{ fontSize: "28px", color: "#4e2a77" }}
-              ></i>
-            </NavBarButtonMenu>
-            <NavbarLogo
-              src={logo}
-              style={{ width: "120px", marginLeft: "10px" }}
-              alt="Saibweb Tecnologia"
-              onClick={() => {
-                history.push("/");
-              }}
-            />
-          </Col>
-          <Col xs={6}>
-            <div>
+        <Container fluid>
+          <Row>
+            <Col xs={6} className="d-flex align-items-center">
+              <NavBarButtonMenu
+                className=" p-0 m-0 p-2 mt-2 mr-2"
+                onClick={toggleMenuFn}
+              >
+                <MenuIcon />
+                <MenuIcon />
+                <MenuIcon />
+              </NavBarButtonMenu>
+              <NavbarLogo
+                src={logo}
+                style={{ width: "120px", marginLeft: "10px" }}
+                alt="Saibweb Tecnologia"
+                onClick={() => {
+                  history.push("/");
+                }}
+              />
+            </Col>
+            <Col xs={6}>
               <Form ref={formRef}>
                 <NavbarOptionsContainer className="d-flex justify-content-end">
                   <SelectUnform
                     name="optionOne"
-                    width={15}
                     optionsList={optionOneValues}
                     isClearable={true}
                     isSearchable={true}
                   />
                   <SelectUnform
                     name="optionTwo"
-                    width={15}
                     optionsList={optionTwoValues}
                     isClearable={true}
                     isSearchable={true}
                   />
                   <div className="pt-2">
-                    <Button text="Entrar" icon="sing-in" />
+                    <CustomButton
+                      text="Entrar"
+                      icon="sing-in"
+                      className="mt-0"
+                    ></CustomButton>
                   </div>
                 </NavbarOptionsContainer>
               </Form>
-            </div>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        </Container>
       </NavBar>
     </HeaderContainer>
   );

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
-  height: 8vh;
+  height: 80px;
 `;
 
 export const NavBar = styled.nav`
@@ -23,6 +23,14 @@ export const NavBarButtonMenu = styled.button`
   &:hover {
     cursor: pointer;
   }
+`;
+
+export const MenuIcon = styled.div`
+  width: 35px;
+  height: 5px;
+  color: #4e2a77;
+  background-color: #4e2a77;
+  margin: 6px 0;
 `;
 
 export const NavbarLogo = styled.img`
