@@ -15,6 +15,25 @@ export function phoneMask(target) {
   }
 }
 
+export function cepMask(target) {
+  let v = target.value;
+  let elem = target.id;
+
+  v = v.replace(/\D/g, ""); //Remove tudo o que não é dígito
+  v = v.replace(/^([\d]{2})\.*([\d]{3})-*([\d]{3})/, "$1.$2-$3");
+  document.getElementById(elem).value = v.substring(0, 10);
+  return v;
+}
+
+export function ufMask(target) {
+  let v = target.value.toUpperCase();
+  let elem = target.id;
+
+  v = v.replace(/[A-Z]{5}/, "");
+  document.getElementById(elem).value = v.substring(0, 2);
+  return v;
+}
+
 export function cpfOrCnpjMask(target) {
   let v = target.value;
   let elem = target.id;

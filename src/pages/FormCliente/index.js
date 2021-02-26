@@ -6,18 +6,30 @@ import { AgGridReact } from "ag-grid-react";
 import { useHistory } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { Container, Row, Col } from "react-bootstrap";
-import { nameMask, cpfOrCnpjMask, phoneMask } from "~/utils/mask";
+import {
+  nameMask,
+  cpfOrCnpjMask,
+  phoneMask,
+  cepMask,
+  ufMask,
+} from "~/utils/maskInput";
+
+import {
+  nameMaskLabel,
+  cpfOrCnpjMaskLabel,
+  phoneMaskLabel,
+  cepMaskLabel,
+  ufMaskLabel,
+} from "~/utils/maskLabel";
 
 /* ========= Styles =========== */
 import {
   PageContainer,
   PageTitle,
   PageTitleContainer,
-  GridOptionsBar,
 } from "~/styles/globalStyles";
 /* ========= Styles =========== */
 
-import Button from "~/components/Button";
 import CustomButton from "~/components/CustomButton";
 import Utils from "~/utils/utils";
 import GridTexts from "~/utils/gridTexts";
@@ -27,7 +39,6 @@ import Modal from "~/components/Modal";
 
 import "~/index.css";
 import Api from "~/utils/Api";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SelectUnform from "~/components/SelectUnform";
 
 /* ========= Styles =========== */
@@ -102,6 +113,8 @@ export default function FormCliente() {
     { value: "2", label: "Comercial" },
   ];
 
+  const [textButtonSend, setTextButtonSend] = useState("Criar");
+
   useEffect(() => {
     const routeState = browserHistory.location.state;
 
@@ -109,13 +122,18 @@ export default function FormCliente() {
       dadosInput.CLI_DATANASC = Utils.DateFormatter(dadosInput.CLI_DATANASC);
 
       setClienteAtual(dadosInput);
+
+      if (typeof clienteAtual.CLI_ID == "number") {
+        setTextButtonSend("Atualizar");
+      }
+
       setTimeout(() => {
-        formRef.current.setData({
-          CLI_NOME: clienteAtual.CLI_NOME,
-          CLI_CNPJ_CPF: clienteAtual.CLI_CNPJ_CPF,
-          CLI_DATANASC: clienteAtual.CLI_DATANASC,
-          CLI_FONE: clienteAtual.CLI_FONE,
-        });
+        formRef.current.setFieldValue("CLI_NOME", clienteAtual.CLI_NOME);
+        formRef.current.setFieldValue(
+          "CLI_CNPJ_CPF",
+          clienteAtual.CLI_CNPJ_CPF
+        );
+        formRef.current.setFieldValue("CLI_FONE", clienteAtual.CLI_FONE);
       }, 300);
     };
 
@@ -231,17 +249,15 @@ export default function FormCliente() {
   };
 
   const gerenciaFormCliente = async (data, { reset }) => {
-    // if (listaEnderecos.length <= 0) {
-    //   addToast("O cliente precisa ter pelo menos um endereço cadastrado!", {
-    //     appearance: "error",
-    //   });
-    //   return;
-    // }
+    if (listaEnderecos.length <= 0) {
+      addToast("O cliente precisa ter pelo menos um endereço cadastrado!", {
+        appearance: "error",
+      });
+      return;
+    }
 
     try {
       formRef.current.setErrors({});
-
-      data.CLI_DATANASC = Utils.DateFormatterCustom(data.CLI_DATANASC);
 
       const schema = Yup.object().shape({
         CLI_NOME: Yup.string().required("Preencha o campo Nome"),
@@ -258,14 +274,9 @@ export default function FormCliente() {
         abortEarly: false,
       });
 
-      console.log("DATA DE CADASTRO", clienteAtual.CLI_DATACAD);
-      console.log("dados do formulário", data);
-
-      data.CLI_DATACAD = clienteAtual.CLI_DATACAD
-        ? Utils.DateFormatterCustom(clienteAtual.CLI_DATACAD)
-        : Utils.DateFormatterCustom(new Date(Date.now()));
-
-      data.CLI_ID = clienteAtual.CLI_ID || 0;
+      data.CLI_DATANASC = Utils.DateFormatterCustom(data.CLI_DATANASC);
+      data.CLI_DATACAD = Utils.DateFormatterCustom(new Date(Date.now()));
+      data.CLI_ID = clienteAtual.CLI_ID;
 
       const request = {
         cliente: data,
@@ -274,7 +285,7 @@ export default function FormCliente() {
 
       const api = new Api();
 
-      await api.SalvarDadosCliente(request);
+      let x = await api.SalvarDadosCliente(request);
 
       reset();
       browserHistory.replace("/clientes");
@@ -308,7 +319,9 @@ export default function FormCliente() {
       const schema = Yup.object().shape({
         CLIE_ENDERECO: Yup.string().required("Preencha o campo Logradouro"),
         CLIE_BAIRRO: Yup.string().required("Preencha o campo Bairro"),
-        CLIE_CEP: Yup.string().required("Preencha o campo CEP"),
+        CLIE_CEP: Yup.string()
+          .required("Preencha o campo CEP")
+          .min(10, "Digite 8 números"),
         CLIE_CIDADE: Yup.string().required("Preencha o campo Cidade"),
         CLIE_UF: Yup.string().required("Preencha o campo UF"),
         CLIE_TIPO: Yup.string().required("Selecione o Tipo Endereço"),
@@ -437,7 +450,7 @@ export default function FormCliente() {
 
                   <Row className="flex-row-reverse">
                     <Col xl={2} md={3}>
-                      <CustomButton text="Criar"></CustomButton>
+                      <CustomButton text={textButtonSend}></CustomButton>
                     </Col>
                   </Row>
                 </Container>
@@ -480,6 +493,16 @@ export default function FormCliente() {
                 icon="trash-alt"
               ></CustomButton>
             </Col>
+            <Col xl={2} md={3} className="d-flex justify-content-end">
+              <CustomButton
+                icon="angle-left"
+                className="w-25"
+                action={() => {
+                  console.log("Voltar");
+                  browserHistory.goBack();
+                }}
+              ></CustomButton>
+            </Col>
           </Row>
         </PageBodyContainer>
 
@@ -501,21 +524,52 @@ export default function FormCliente() {
                         name="CLIE_ENDERECO"
                         label="Logradouro"
                         type="text"
+                        onChange={(e) => {
+                          nameMask(e.target);
+                        }}
                       />
                     </Col>
                     <Col md={4}>
-                      <Input name="CLIE_BAIRRO" label="Bairro" type="text" />
+                      <Input
+                        name="CLIE_BAIRRO"
+                        label="Bairro"
+                        type="text"
+                        onChange={(e) => {
+                          nameMask(e.target);
+                        }}
+                      />
                     </Col>
                     <Col md={4}>
-                      <Input name="CLIE_CEP" label="CEP:" type="text" />
+                      <Input
+                        name="CLIE_CEP"
+                        label="CEP"
+                        type="text"
+                        onChange={(e) => {
+                          cepMask(e.target);
+                        }}
+                      />
                     </Col>
                   </Row>
                   <Row>
                     <Col md={4}>
-                      <Input name="CLIE_CIDADE" label="Cidade:" type="text" />
+                      <Input
+                        name="CLIE_CIDADE"
+                        label="Cidade"
+                        type="text"
+                        onChange={(e) => {
+                          nameMask(e.target);
+                        }}
+                      />
                     </Col>
                     <Col md={4}>
-                      <Input name="CLIE_UF" label="UF" type="text" />
+                      <Input
+                        name="CLIE_UF"
+                        label="UF"
+                        type="text"
+                        onChange={(e) => {
+                          ufMask(e.target);
+                        }}
+                      />
                     </Col>
                     <Col md={4}>
                       <SelectUnform

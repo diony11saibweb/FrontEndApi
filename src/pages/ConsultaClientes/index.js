@@ -1,8 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { useHistory } from "react-router-dom";
 import { useToasts } from "react-toast-notifications";
 import { Container, Row, Col } from "react-bootstrap";
+import styled from "styled-components";
+
+import "~/index.css";
+import CustomButton from "~/components/CustomButton";
+import Utils from "~/utils/utils";
+import GridTexts from "~/utils/gridTexts";
+import Modal from "~/components/Modal";
+import Api from "~/utils/Api";
+import TypeSearch from "~/components/TypeSearch";
+import {
+  nameMaskLabel,
+  cpfOrCnpjMaskLabel,
+  phoneMaskLabel,
+  cepMaskLabel,
+  ufMaskLabel,
+} from "~/utils/maskLabel";
+
+import { nameMask } from "~/utils/maskInput";
+
+import { Form } from "@unform/web";
+
+import Input from "~/components/Input";
 
 /* ===== Styles ===== */
 import {
@@ -20,19 +42,74 @@ import {
 import { ModalPersonalInfoRow } from "./styles";
 /* ===== Styles ===== */
 
-import "~/index.css";
-import CustomButton from "~/components/CustomButton";
-import Utils from "~/utils/utils";
-import GridTexts from "~/utils/gridTexts";
-import Modal from "~/components/Modal";
-import Api from "~/utils/Api";
-import TypeSearch from "~/components/TypeSearch";
+/* ========= Styles =========== */
+
+const PageBodyContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ededed;
+  border-radius: 4px;
+  padding: 6px;
+`;
+
+const PageSectionInfo = styled.div`
+  width: 100%;
+  padding: 8px;
+`;
+
+const PageSectionAddress = styled(PageSectionInfo)`
+  border: none;
+`;
+
+const PageFormTitleContainer = styled(PageTitleContainer)`
+  color: #9e9e9e;
+  border-bottom: 1px solid #9e9e9e;
+`;
+
+const PageFormTitle = styled(PageTitle)`
+  font-size: 16px;
+  color: #9e9e9e;
+`;
+
+const PageFormBodyContainer = styled.div`
+  display: flex;
+  padding: 6px;
+`;
+
+const FormButton = styled.button`
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 22px;
+  outline: none;
+  margin-right: 6px;
+  background-color: transparent;
+  color: #4e2a77;
+  border: 2px solid #4e2a77;
+
+  &:hover {
+    background-color: #4e2a77;
+    color: #fff;
+    border: 2px solid #4e2a77;
+    cursor: pointer;
+  }
+  margin: 0 0 10px 8px;
+`;
+
+const ModalFormButton = styled(FormButton)`
+  margin-top: 12px;
+`;
+/* ========= End Styles =========== */
 
 const ConsultaClientes = () => {
   const [clientesList, setClientesList] = useState([]);
   const browserHistory = useHistory();
   const [gridInstance, setGridInstance] = useState({ api: {}, columnApi: {} });
   const { addToast } = useToasts();
+  const modalFormRef = useRef(null);
+
+  const modalFormSearchRef = useRef(null);
+  const [visibilityModal, setVisibilityModal] = useState(false);
+  const [surveyedCustomers, setSurveyedCustomers] = useState([]);
 
   useEffect(() => {
     async function obterListaClientes() {
@@ -115,7 +192,7 @@ const ConsultaClientes = () => {
 
   /* estiliza as linhas da grid dinamicamente */
   const estilizaLinhaGrid = (params) => {
-    if (params.data.CLI_ID === 1) {
+    if (params.data.CLI_ID === 99) {
       return { background: "#4e2a77", color: "#fff" };
     }
   };
@@ -143,9 +220,10 @@ const ConsultaClientes = () => {
 
     setClienteSelecionado(selecaoGrid[0].data);
     console.log("grid selectin", selecaoGrid[0].data);
-
     setExibeDadosCliente(true);
   };
+
+  console.log(exibeDadosCliente);
 
   const filtrarClientes = () => {
     setExibeConsultaClientes(true);
@@ -190,7 +268,7 @@ const ConsultaClientes = () => {
   const [clientePesquisado, setClientePesquisado] = useState(null);
 
   const obterClientePesquisado = (cliente) => {
-    console.log(cliente);
+    console.log("Cliente Selecionado");
     setClientePesquisado(cliente);
   };
 
@@ -204,6 +282,20 @@ const ConsultaClientes = () => {
     setExibeConsultaClientes(false);
     setExibeDadosCliente(true);
   };
+
+  const customerCurveyedSelected = (id) => {
+    const x = surveyedCustomers.find((item) => {
+      if (item.CLI_ID == id) {
+        return item;
+      }
+    });
+
+    browserHistory.push("/clientes/form", x);
+  };
+
+  useEffect(() => {
+    console.log(clientePesquisado);
+  });
 
   const alterarCadastroClientePesquisado = () => {
     if (clientePesquisado === null || clientePesquisado === undefined) {
@@ -246,7 +338,9 @@ const ConsultaClientes = () => {
                   <CustomButton
                     text="Pesquisar Cliente"
                     icon="search"
-                    action={filtrarClientes}
+                    action={() => {
+                      setVisibilityModal(true);
+                    }}
                   />
                 </Col>
               </Row>
@@ -279,12 +373,82 @@ const ConsultaClientes = () => {
         ></AgGridReact>
       </div>
 
+      <Modal
+        title="Pesquisa"
+        size="md"
+        isOpen={visibilityModal}
+        closeDialogFn={() => {
+          setVisibilityModal(false);
+        }}
+      >
+        <PageBodyContainer>
+          <Form ref={modalFormSearchRef} onSubmit={() => {}}>
+            <PageFormBodyContainer>
+              <Container fluid>
+                <Row>
+                  <Col md={12}>
+                    <Input
+                      name="searchClient"
+                      label="Cliente"
+                      placeholder="Digite o nome do cliente"
+                      type="text"
+                      onChange={async (e) => {
+                        nameMask(e.target);
+                        const clientesApi = new Api();
+                        const returnApi = await clientesApi.ObterClientePorParametros(
+                          e.target.value
+                        );
+                        setSurveyedCustomers(returnApi.data);
+                      }}
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  {surveyedCustomers[0] && (
+                    <table class="table">
+                      <tbody>
+                        {surveyedCustomers.map((item, i) => {
+                          return (
+                            <tr>
+                              <th scope="row">{item.CLI_ID}</th>
+                              <td>{item.CLI_NOME}</td>
+                              <td>
+                                <CustomButton
+                                  icon="angle-right"
+                                  className="w-25 p-0 m-0"
+                                  action={() => {
+                                    customerCurveyedSelected(item.CLI_ID);
+                                  }}
+                                ></CustomButton>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  )}
+                </Row>
+              </Container>
+            </PageFormBodyContainer>
+            {/* <Container fluid>
+              <Row className="flex-row-reverse">
+                <Col xl={4} md={4}>
+                  <CustomButton text="Ver"></CustomButton>
+                </Col>
+              </Row>
+            </Container> */}
+          </Form>
+        </PageBodyContainer>
+      </Modal>
+
       {exibeDadosCliente && (
         <Modal
-          fechaModalFunc={() => {
-            fecharModalDadosClientes();
+          title=""
+          size="lg"
+          isOpen={true}
+          closeDialogFn={() => {
+            setExibeDadosCliente(false);
           }}
-          titulo="Dados do Cliente"
         >
           <ModalBodyContainer>
             <ModalHalfBordered>
@@ -293,22 +457,24 @@ const ConsultaClientes = () => {
               </ModalReportTitleContainer>
 
               <ModalPersonalInfoRow>
-                Nome: <strong>{clienteSelecionado.CLI_NOME}</strong>
+                Nome:{" "}
+                <strong>{nameMaskLabel(clienteSelecionado.CLI_NOME)}</strong>
               </ModalPersonalInfoRow>
               <ModalPersonalInfoRow>
                 C.P.F. / C.N.P.J.:{" "}
                 <strong>
-                  {Utils.CpfCnpjFormatter(clienteSelecionado.CLI_CNPJ_CPF)}
+                  {nameMaskLabel(clienteSelecionado.CLI_CNPJ_CPF)}
                 </strong>
               </ModalPersonalInfoRow>
               <ModalPersonalInfoRow>
                 Data Nascimento:{" "}
                 <strong>
-                  {Utils.DateFormatter(clienteSelecionado.CLI_DATANASC)}
+                  {clienteSelecionado.CLI_DATANASC.substring(0, 10)}
                 </strong>
               </ModalPersonalInfoRow>
               <ModalPersonalInfoRow>
-                Telefone: <strong>{clienteSelecionado.CLI_FONE}</strong>
+                Telefone:{" "}
+                <strong>{phoneMaskLabel(clienteSelecionado.CLI_FONE)}</strong>
               </ModalPersonalInfoRow>
             </ModalHalfBordered>
             <ModalHalfNoBorder>
@@ -318,7 +484,7 @@ const ConsultaClientes = () => {
 
               <div
                 className="ag-theme-balham"
-                style={{ height: "30vh", width: "100%" }}
+                style={{ height: "40vh", width: "100%" }}
               >
                 <AgGridReact
                   columnDefs={modalGridcolumnDefs}

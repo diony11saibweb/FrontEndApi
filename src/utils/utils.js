@@ -8,13 +8,19 @@ export default class Utils {
 
     const words = value.toLowerCase().split(" ");
 
-    const result = words
-      .map((word) => {
-        return word[0].toUpperCase() + word.substring(1);
-      })
-      .join(" ");
+    console.log(value);
 
-    return result;
+    try {
+      const result = words
+        .map((word) => {
+          return word[0].toUpperCase() + word.substring(1);
+        })
+        .join(" ");
+
+      return result;
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   static PhoneFormatter(params) {
@@ -30,6 +36,10 @@ export default class Utils {
       .split("/")
       .join("")
       .split(" ")
+      .join("")
+      .split("(")
+      .join("")
+      .split(")")
       .join("");
 
     if (phoneClean.length === 11) {
