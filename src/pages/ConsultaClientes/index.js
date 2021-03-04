@@ -117,7 +117,6 @@ const ConsultaClientes = () => {
         const clientesApi = new Api();
         const returnApi = await clientesApi.ObterTodosOsClientes();
         setClientesList(returnApi);
-        console.log("Lista de clientes", returnApi);
       } catch (err) {
         console.log(err);
       }
@@ -219,11 +218,8 @@ const ConsultaClientes = () => {
     }
 
     setClienteSelecionado(selecaoGrid[0].data);
-    console.log("grid selectin", selecaoGrid[0].data);
     setExibeDadosCliente(true);
   };
-
-  console.log(exibeDadosCliente);
 
   const filtrarClientes = () => {
     setExibeConsultaClientes(true);
@@ -268,7 +264,6 @@ const ConsultaClientes = () => {
   const [clientePesquisado, setClientePesquisado] = useState(null);
 
   const obterClientePesquisado = (cliente) => {
-    console.log("Cliente Selecionado");
     setClientePesquisado(cliente);
   };
 
@@ -292,10 +287,6 @@ const ConsultaClientes = () => {
 
     browserHistory.push("/clientes/form", x);
   };
-
-  useEffect(() => {
-    console.log(clientePesquisado);
-  });
 
   const alterarCadastroClientePesquisado = () => {
     if (clientePesquisado === null || clientePesquisado === undefined) {

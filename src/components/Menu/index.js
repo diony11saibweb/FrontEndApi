@@ -91,7 +91,6 @@ const Menu = ({ exibeMenuProp, fechaMenuFn }) => {
   const voltarNivelMenu = (voltarParaRaiz = false) => {
     // pega o penúltimo item da lista e o transforma no nível atual
     const tempNivelAtual = listaNiveisMenu[listaNiveisMenu.length - 2];
-    console.log("voltar nivel", tempNivelAtual);
 
     /* a flag voltarPraRaiz indica que o usuário deseja voltar para
      * a seleção de módulos. Caso não seja informada volta para o nível anterior
@@ -114,8 +113,6 @@ const Menu = ({ exibeMenuProp, fechaMenuFn }) => {
   const desenhaMenuPrincipalFn = (listaOpcoesMenu) => {
     let listaNiveisExibir = [...listaNiveisMenu] || [];
     listaNiveisExibir = listaNiveisExibir.reverse();
-
-    console.log("desenha indicadores", listaNiveisMenu);
 
     if (!nivelAtualItemMenu) {
       return (

@@ -48,11 +48,8 @@ export default class Api {
   async SalvarDadosCliente(request) {
     try {
       if (request.cliente.CLI_ID) {
-        console.log("Atualizando");
         await api.put(`/v1/cadastro`, request);
-        console.log("Feito");
       } else {
-        console.log("Criando");
         await api.post("/v1/cadastro", request);
       }
     } catch (err) {

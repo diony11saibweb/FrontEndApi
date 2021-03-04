@@ -1,5 +1,5 @@
 export function phoneMaskLabel(label) {
-  if (label != "" || label != null) {
+  if (label != "" && label != null) {
     let v = label.replace(/\D/g, ""); //Remove tudo o que não é dígito
     if (label.length < 15) {
       v = v.replace(/\D/g, ""); //Remove tudo o que não é dígito
@@ -16,7 +16,7 @@ export function phoneMaskLabel(label) {
 }
 
 export function cepMaskLabel(label) {
-  if (label != "" || label != null) {
+  if (label != "" && label != null) {
     let v = label.replace(/\D/g, ""); //Remove tudo o que não é dígito
     v = v.replace(/^([\d]{2})\.*([\d]{3})-*([\d]{3})/, "$1.$2-$3");
     return v;
@@ -25,7 +25,7 @@ export function cepMaskLabel(label) {
 }
 
 export function ufMaskLabel(label) {
-  if (label != "" || label != null) {
+  if (label != "" && label != null) {
     let v = label.toUpperCase();
     v = v.replace(/[A-Z]{5}/, "").substring(0, 2);
     return v;
@@ -34,7 +34,7 @@ export function ufMaskLabel(label) {
 }
 
 export function cpfOrCnpjMaskLabel(v) {
-  if (v != "" || v != null) {
+  if (v != "" && v != null) {
     v = v.replace(/\D/g, ""); //Remove tudo o que não é dígito
     if (v.length < 11) {
       v = v.replace(/(\d{3})(\d)/, "$1.$2"); //Coloca um ponto entre o terceiro e o quarto dígitos
@@ -63,8 +63,7 @@ export function cpfOrCnpjMaskLabel(v) {
 }
 
 export function nameMaskLabel(v) {
-  if (v != "" || v != null || undefined) {
-    console.log(v);
+  if (v != "" && v != null && v === undefined) {
     const text = v
       .toLowerCase()
       .split(" ")

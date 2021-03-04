@@ -216,7 +216,6 @@ export default function FormCliente() {
       var data = rowNode.data;
       enderecosTemp.push(data);
     });
-    console.log("lista de endereços", enderecosTemp);
     setListaEnderecos(enderecosTemp);
   };
 
@@ -234,7 +233,6 @@ export default function FormCliente() {
       selecaoGrid.length === 0
     )
       return;
-    console.log("endereço selecionado", selecaoGrid);
 
     /* a função updateRowData recebe um objeto onde a chave indica a operação
      * que deve ser realizada como update, remove e o valor é usado para substituir
@@ -313,8 +311,6 @@ export default function FormCliente() {
 
   const gerenciaFormEndereco = async (data, { reset }) => {
     try {
-      console.log("form endreço", data);
-
       modalFormRef.current.setErrors({});
       const schema = Yup.object().shape({
         CLIE_ENDERECO: Yup.string().required("Preencha o campo Logradouro"),
@@ -333,8 +329,6 @@ export default function FormCliente() {
 
       // Se existe endereço selecionado se trata de alteração
       if (enderecoSelecionado !== null) {
-        console.log("alteração", enderecoSelecionado);
-
         const enderecoTemp = enderecoSelecionado;
         enderecoTemp.CLIE_ENDERECO = data.CLIE_ENDERECO;
         enderecoTemp.CLIE_BAIRRO = data.CLIE_BAIRRO;
@@ -498,7 +492,6 @@ export default function FormCliente() {
                 icon="angle-left"
                 className="w-25"
                 action={() => {
-                  console.log("Voltar");
                   browserHistory.goBack();
                 }}
               ></CustomButton>
